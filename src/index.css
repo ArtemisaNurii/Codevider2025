@@ -141,11 +141,10 @@
 }
 
 html, body {
-  background: linear-gradient(to bottom right, #000000, #050a08, #47a893);
+  background: linear-gradient(to bottom right, #000000, #050a08, #0ea5e9);
   background-attachment: fixed;
   min-height: 100vh;
 }
-
 /* Override default backgrounds to use the hero gradient */
 .bg-white {
   background: transparent !important;
@@ -159,7 +158,6 @@ html, body {
 .text-gray-500 { color: #ffffff !important; }
 .text-gray-600 { color: #ffffff !important; }
 .text-gray-800 { color: #ffffff !important; }
-.text-gray-900 { color: #ffffff !important; }
 
 /* Slate colors to white */
 .text-slate-100 { color: #f7fafc !important; }

@@ -11,6 +11,7 @@ import ProjectProfile from "./components/ProjectPage.tsx/ProjectProfile";
 import ProjectPage from "./components/ProjectPage.tsx/AllProject";
 import NavbarVariant from "./components/Navbar";
 import Loader from "./components/Loader/Loader";
+import CulturePage from "./components/TeamPage/AllTeam";
 // import AllTeam from "./components/TeamPage/AllTeam";
 
 const queryClient = new QueryClient();
@@ -18,60 +19,43 @@ const queryClient = new QueryClient();
 // Inner component to handle route changes
 const AppContent = () => {
   const location = useLocation();
-  const [isPageLoading, setPageLoading] = useState(true);
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
-  const previousPathname = useRef<string>("");
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
-  // Handle route changes
+  // Fallback: ensure content shows after maximum time (only for initial load)
   useEffect(() => {
-    const currentPath = location.pathname;
-    
-    // Only trigger loader if this is actually a route change (not initial load)
-    if (previousPathname.current !== "" && previousPathname.current !== currentPath) {
-      console.log("Route change detected:", previousPathname.current, "->", currentPath);
-      setPageLoading(true);
-    }
-    
-    previousPathname.current = currentPath;
-  }, [location.pathname]);
-
-  // Fallback: ensure content shows after maximum time
-  useEffect(() => {
-    if (isPageLoading) {
+    if (isInitialLoading) {
       const fallbackTimer = setTimeout(() => {
-        console.log("Fallback: forcing loader to complete");
-        setPageLoading(false);
-        setIsInitialLoad(false);
+        console.log("Fallback: forcing initial loader to complete");
+        setIsInitialLoading(false);
       }, 3000); // 3 second fallback
 
       return () => clearTimeout(fallbackTimer);
     }
-  }, [isPageLoading]);
+  }, [isInitialLoading]);
 
   const handleLoadingComplete = () => {
-    console.log("Loading complete callback fired");
-    setPageLoading(false);
-    setIsInitialLoad(false);
+    console.log("Initial loading complete callback fired");
+    setIsInitialLoading(false);
   };
 
-  console.log("AppContent render:", { isPageLoading, isInitialLoad, pathname: location.pathname });
+  console.log("AppContent render:", { isInitialLoading, pathname: location.pathname });
 
   return (
     <>
-      {/* Show the loader while isPageLoading === true */}
-      {isPageLoading && (
-        <Loader isLoading={isPageLoading} onLoadingComplete={handleLoadingComplete} />
+      {/* Show the loader only during initial load */}
+      {isInitialLoading && (
+        <Loader isLoading={isInitialLoading} onLoadingComplete={handleLoadingComplete} />
       )}
 
-      {/* App content that should wait for the loader */}
-      {!isPageLoading && <NavbarVariant />}
+      {/* App content that shows after initial load */}
+      {!isInitialLoading && <NavbarVariant />}
       
-      {!isPageLoading && (
+      {!isInitialLoading && (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/projects" element={<ProjectPage />} />
           <Route path="/projects/:id" element={<ProjectProfile />} />
-          {/* <Route path="/team" element={<AllTeam />} /> */}
+          <Route path="/team" element={<CulturePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       )}

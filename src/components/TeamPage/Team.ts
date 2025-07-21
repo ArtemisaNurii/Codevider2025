@@ -1,0 +1,30 @@
+import pasho from '../../assets/teamImages/pasho.jpg';
+
+
+export const teamMembers = [
+    { id: 1, name: 'Pasho Toska', role: 'CEO', motto: 'Architecting scalable, resilient systems.', imageUrl: pasho },
+    { id: 2, name: 'Samantha Chen', role: 'UX/UI Director', motto: 'Human-centered design is smart business.', imageUrl: 'https://picsum.photos/seed/samantha/400/600' },
+    { id: 3, name: 'David Lee', role: 'Head of Engineering', motto: 'Driving innovation through technical excellence.', imageUrl: 'https://picsum.photos/seed/david/400/600' },
+    { id: 4, name: 'Maria Garcia', role: 'Product Manager', motto: 'Aligning user needs with business goals.', imageUrl: 'https://picsum.photos/seed/maria/400/600' },
+    { id: 5, name: 'James Smith', role: 'DevOps Specialist', motto: 'Reliability is not a feature; it\'s the foundation.', imageUrl: 'https://picsum.photos/seed/james/400/600' },
+    { id: 6, name: 'Priya Patel', role: 'Data Scientist', motto: 'Translating data into actionable insights.', imageUrl: 'https://picsum.photos/seed/priya/400/600' },
+    { id: 7, name: 'Ben Carter', role: 'Senior Frontend Developer', motto: 'Crafting intuitive and performant interfaces.', imageUrl: 'https://picsum.photos/seed/ben/400/600' },
+    { id: 8, name: 'Olivia Martinez', role: 'Marketing Lead', motto: 'Building brand equity through authentic stories.', imageUrl: 'https://picsum.photos/seed/olivia/400/600' },
+    { id: 9, name: 'Ethan Wong', role: 'Senior Backend Developer', motto: 'Engineering robust and secure server-side logic.', imageUrl: 'https://picsum.photos/seed/ethan/400/600' },
+    { id: 10, name: 'Chloe Kim', role: 'QA Lead', motto: 'Quality is a culture, not a department.', imageUrl: 'https://picsum.photos/seed/chloe/400/600' },
+    { id: 11, name: 'Liam Johnson', role: 'Frontend Developer', motto: 'Passionate about clean code and user experience.', imageUrl: 'https://picsum.photos/seed/liam/400/600' },
+    { id: 12, name: 'Ava Thompson', role: 'Head of People & Culture', motto: 'Cultivating an environment where talent thrives.', imageUrl: 'https://picsum.photos/seed/ava/400/600' },
+    { id: 13, name: 'Noah Rodriguez', role: 'Security Analyst', motto: 'Proactively defending our digital assets.', imageUrl: 'https://picsum.photos/seed/noah/400/600' },
+    { id: 14, name: 'Isabella Perez', role: 'Content Strategist', motto: 'Clarity and precision in every message.', imageUrl: 'https://picsum.photos/seed/isabella/400/600' },
+    { id: 15, name: 'Michael Brown', role: 'Cloud Infrastructure Lead', motto: 'Designing the backbone of our services.', imageUrl: 'https://picsum.photos/seed/michael/400/600' },
+    { id: 16, name: 'Sophia Wilson', role: 'Software Engineer', motto: 'Solving complex problems with elegant code.', imageUrl: 'https://picsum.photos/seed/sophia/400/600' },
+    { id: 17, name: 'Daniel Taylor', role: 'Financial Analyst', motto: 'Ensuring sustainable and strategic growth.', imageUrl: 'https://picsum.photos/seed/daniel/400/600' },
+    { id: 18, name: 'Mia Anderson', role: 'Lead Designer', motto: 'Visual systems that communicate and inspire.', imageUrl: 'https://picsum.photos/seed/mia/400/600' },
+    { id: 19, name: 'Lucas Hernandez', role: 'Mobile Engineering Lead', motto: 'Delivering seamless experiences on every device.', imageUrl: 'https://picsum.photos/seed/lucas/400/600' },
+    { id: 20, name: 'Harper Moore', role: 'Agile Coach', motto: 'Empowering teams to deliver value efficiently.', imageUrl: 'https://picsum.photos/seed/harper/400/600' },
+    { id: 21, name: 'Jackson Clark', role: 'Business Development', motto: 'Forging partnerships that create mutual value.', imageUrl: 'https://picsum.photos/seed/jackson/400/600' },
+    { id: 22, name: 'Evelyn Lewis', role: 'Technical Writer', motto: 'Making the complex understandable.', imageUrl: 'https://picsum.photos/seed/evelyn/400/600' },
+    { id: 23, name: 'Logan Walker', role: 'Engineering Intern', motto: 'Eager to learn, contribute, and grow.', imageUrl: 'https://picsum.photos/seed/logan/400/600' },
+    { id: 24, name: 'Aria Hall', role: 'Customer Success Manager', motto: 'Our clients\' success is our success.', imageUrl: 'https://picsum.photos/seed/aria/400/600' },
+    { id: 25, name: 'Henry Allen', role: 'Founder & CEO', motto: 'Leading with vision and integrity.', imageUrl: 'https://picsum.photos/seed/henry/400/600' },
+  ];

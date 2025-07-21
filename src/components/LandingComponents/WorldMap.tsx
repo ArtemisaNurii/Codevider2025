@@ -40,7 +40,7 @@ export const WorldMapDemo: React.FC = () => {
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
   
 
-  const arcColors = ["#10B981", "#10B981", "#10B981"]; // Emerald color
+  const arcColors = ["#0ea5e9", "#0ea5e9", "#0ea5e9"]; // Sky color
 
   return (
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden">

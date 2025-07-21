@@ -58,7 +58,7 @@
 //       50% { opacity: 0; }
 //     }
 //     .blinking-cursor {
-//       color: #34d399; /* Emerald color for the cursor */
+//       color: #38bdf8; /* Sky color for the cursor */
 //       animation: blink 1s step-end infinite;
 //     }
 //   `;
@@ -69,7 +69,7 @@
 //     <h1 style={{ fontFamily: "Poppins, sans" }} className="hero-text text-4xl md:text-6xl lg:text-7xl font-normal tracking-tighter h-24 md:h-40 lg:h-48 flex flex-col justify-center">
 //       <span className="block text-white/90">Your Partner in</span>
 
-//       <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">
+//       <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-teal-400">
 //         {displayedText}
 //         <span className="blinking-cursor">|</span>
 //       </span>
@@ -95,7 +95,7 @@ const cursorStyle = `
     50% { opacity: 0; }
   }
   .blinking-cursor {
-    color: #34d399; /* Emerald color for the cursor */
+    color: #38bdf8; /* Sky color for the cursor */
     animation: blink 1s step-end infinite;
   }
 `;
@@ -111,7 +111,7 @@ const HeroHeadline: React.FC<HeroHeadlineProps> = ({ displayedText }) => {
       <style>{cursorStyle}</style>
       <h1 style={{ fontFamily: "Poppins, sans" }} className="hero-text text-4xl md:text-6xl lg:text-7xl font-normal tracking-tighter h-24 md:h-40 lg:h-48 flex flex-col justify-center">
         <span className="block text-white/90">Your Partner in</span>
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-300">
           {/* --- MODIFIED: Renders the text from props --- */}
           {displayedText}
           <span className="blinking-cursor">|</span>

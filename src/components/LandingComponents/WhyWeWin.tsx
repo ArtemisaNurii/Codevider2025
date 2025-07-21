@@ -40,7 +40,7 @@ interface StatCardProps {
 const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(({ percentage, description, label, Icon }, ref) => (
   <div
     ref={ref} // Forwarding the ref for GSAP animations
-    className="flex flex-col justify-between rounded-2xl p-8 h-full cursor-pointer bg-gradient-to-br from-black to-emerald-900 [transform-style:preserve-3d]"
+            className="flex flex-col justify-between rounded-2xl p-8 h-full cursor-pointer bg-gradient-to-br from-black to-sky-900 [transform-style:preserve-3d]"
   >
     <div>
       <p className="text-5xl lg:text-7xl font-extralight tracking-tighter leading-none text-white">
@@ -51,7 +51,7 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(({ percentage, 
       </p>
     </div>
     <div className="mt-10 pt-4">
-      <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400">{label}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-sky-400">{label}</p>
       <div className="flex items-end justify-between mt-3">
         {/* Decorative logo bars */}
         <div className="flex items-center">
@@ -60,7 +60,7 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(({ percentage, 
             <span className="h-3 w-1 bg-gray-800 ml-0.5"></span>
           </div>
         </div>
-        <Icon size={32} className="text-emerald-400" />
+                    <Icon size={32} className="text-sky-400" />
       </div>
     </div>
   </div>
@@ -68,8 +68,7 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(({ percentage, 
 
 
 const Saving = () => {
-  // --- REFACTORED: Removed isMobile and isReadMoreHovered states ---
-  // Their logic is now handled by Tailwind's responsive and hover prefixes.
+
 
   const containerRef = useRef(null);
   const headerRef = useRef(null);

@@ -43,7 +43,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index }) => 
         {/* Image Section - Smaller and more professional */}
         <div className={`lg:col-span-5 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-sky-500/20 to-blue-500/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
             <img 
               src={project.imageUrl} 
               alt={project.title} 
@@ -56,7 +56,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index }) => 
         <div className={`lg:col-span-7 space-y-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
           {/* Category and Client Info */}
           <div className="flex flex-wrap items-center gap-4 text-sm">
-            <span className="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full font-medium border border-emerald-500/20">
+            <span className="bg-sky-500/10 text-sky-400 px-3 py-1 rounded-full font-medium border border-sky-500/20">
               {project.category}
             </span>
             {project.client && (
@@ -100,7 +100,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index }) => 
           <div className="pt-2">
             <Link
               to={`/projects/${project.id}`} 
-              className="inline-flex items-center gap-2 text-white font-medium bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 group"
+              className="inline-flex items-center gap-2 text-white font-medium bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-500 hover:to-sky-400 px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/25 group"
             >
               View Case Study
               <svg 

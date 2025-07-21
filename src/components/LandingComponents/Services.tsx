@@ -310,14 +310,11 @@
 
 
 import React, { useRef, useEffect } from 'react';
-import DotGrid from '../ui/DotGrid';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// The entire page is one single component as requested.
 const ServicesPage = () => {
   // Refs for GSAP animations
   const containerRef = useRef(null);
@@ -360,7 +357,7 @@ const ServicesPage = () => {
             x: 0,
             opacity: 1,
             duration: 0.8,
-            stagger: 0.2,
+            stagger: 0.15,
             ease: "power2.out",
             scrollTrigger: {
               trigger: cards[0],
@@ -401,87 +398,141 @@ const ServicesPage = () => {
     return () => ctx.revert(); // Cleanup
   }, []);
 
-      return (
-
-    <div ref={containerRef} className="min-h-screen bg-[#f8f7f4] font-sans text-[#0f3d24]">
+  return (
+    <div id="services" ref={containerRef} className="min-h-screen bg-white font-sans text-gray-800">
       
       {/* Outer wrapper for content padding and max-width */}
-      <div className="mx-auto max-w-7xl px- py-10 sm:px-10 ">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-10">
 
-        {/* Header Section */}
+        {/* Header Section (Kept minimal as per original code) */}
         <header className="flex items-center justify-between">
           <h2 className="text-xl font-medium"></h2>
-          <button className="rounded-fullpx-6 py-2 text-sm font-medium uppercase tracking-wider text-[#0f3d24] transition-colors ">
-          </button>
+          <button className="rounded-full px-6 py-2 text-sm font-medium uppercase tracking-wider text-[#0c4a6e] transition-colors"></button>
         </header>
 
         {/* Main Content Section */}
         <main className="my-16 md:my-24">
           
-          {/* Main Title */}
-          <h1 ref={titleRef} className="text-5xl text-gray-700 p-6 max-sm:text-3xl font-medium leading-tight md:text-5xl lg:w-4/5">
-          We empower the three pivotal market segments that drive      innovation, efficiency, and growth.    </h1>
+          {/* Main Title (Preserved from original code) */}
+          <h1 ref={titleRef} className="text-4xl font-medium leading-tight text-gray-800 md:text-5xl lg:w-4/5">
+            We empower the three pivotal market segments that drive innovation, efficiency, and growth.
+          </h1>
 
-          {/* Grid Section for the three columns */}
-          <div className="mt-16 grid grid-cols-1 p-6 gap-x-12 gap-y-16 md:mt-24 lg:grid-cols-3">
-            
- {/* Column 1 */}
- <div ref={el => cardsRef.current[0] = el}>
-   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-black to-cyan-800">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-6 w-6 text-white">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-    </svg>
-  </div>
-  <h3 className="mb-4 text-xl font-normal leading-snug text-[#0f3d24]">
-    Series A/B Start‑ups
-  </h3>
-  <p className="text-sm leading-relaxed text-[#0f3d24]/80">
-    Ship your product roadmap without unnecessary payroll overhead—stand up
-    a dedicated pod in under two weeks, enabling rapid MVP iteration and
-    fast customer feedback loops.
-  </p>
-</div>
+          {/* Grid Section for the six columns */}
+          <div
+            ref={gridRef}
+            className="mt-16 grid grid-cols-1 gap-8 md:mt-24 lg:grid-cols-3 xl:grid-cols-3"
+          >
+            {/* Card 1: Start-ups */}
+            <div ref={el => cardsRef.current[0] = el} className="relative flex h-full flex-col bg-sky-100 p-8 rounded-3xl rounded-tl-lg text-sky-900">
+              <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-sky-900/30">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-5 w-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </div>
+              <h3 className="mb-4 mt-4 text-2xl font-semibold">
+                Series A/B Start‑ups
+              </h3>
+              <ul className="list-disc list-inside space-y-2 text-sm leading-relaxed text-sky-800/90">
+                <li>
+                  Ship your product roadmap without unnecessary payroll overhead—stand up
+                  a dedicated pod in under two weeks, enabling rapid MVP iteration and
+                  fast customer feedback loops.
+                </li>
+              </ul>
+            </div>
 
- {/* Column 2 */}
- <div ref={el => cardsRef.current[1] = el}>
-   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-black to-cyan-800">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-6 w-6 text-white">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-    </svg>
-  </div>
-  <h3 className="mb-4 text-xl font-normal leading-snug text-[#0f3d24]">
-    Enterprise Modernisation
-  </h3>
-  <p className="text-sm leading-relaxed text-[#0f3d24]/80">
-    Modernise legacy systems with cloud‑native SaaS architectures—eliminate
-    tech debt, improve maintainability, and reduce total cost of ownership
-    by 25% per McKinsey & Company best practices.
-  </p>
-</div>
+            {/* Card 2: Enterprise */}
+            <div ref={el => cardsRef.current[1] = el} className="relative flex h-full flex-col bg-sky-100 p-8 rounded-3xl rounded-tl-lg text-sky-900">
+              <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-sky-900/30">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-5 w-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </div>
+              <h3 className="mb-4 mt-4 text-2xl font-semibold">
+                Enterprise Modernisation
+              </h3>
+              <ul className="list-disc list-inside space-y-2 text-sm leading-relaxed text-sky-800/90">
+                <li>
+                  Modernise legacy systems with cloud‑native SaaS architectures—eliminate
+                  tech debt, improve maintainability, and reduce total cost of ownership
+                  by 25% per McKinsey & Company best practices.
+                </li>
+              </ul>
+            </div>
 
- {/* Column 3 */}
- <div ref={el => cardsRef.current[2] = el}>
-   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-black to-cyan-800">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-6 w-6 text-white">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-    </svg>
-  </div>
-  <h3 className="mb-4 text-xl font-normal leading-snug text-[#0f3d24]">
-    CRM‑Centric Orgs
-  </h3>
-  <p className="text-sm leading-relaxed text-[#0f3d24]/80">
-    Design and implement bespoke CRM workflows that drive a 35% boost in
-    user adoption and deliver an $8.71 return on every dollar spent (Nucleus
-    Research), enhancing customer retention and process efficiency.
-  </p>
-</div>
+            {/* Card 3: CRM-Centric Orgs */}
+            <div ref={el => cardsRef.current[2] = el} className="relative flex h-full flex-col bg-sky-100 p-8 rounded-3xl rounded-tl-lg text-sky-900">
+              <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-sky-900/30">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-5 w-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </div>
+              <h3 className="mb-4 mt-4 text-2xl font-semibold">
+                CRM‑Centric Orgs
+              </h3>
+              <ul className="list-disc list-inside space-y-2 text-sm leading-relaxed text-sky-800/90">
+                <li>
+                  Design and implement bespoke CRM workflows that drive a 35% boost in
+                  user adoption and deliver an $8.71 return on every dollar spent (Nucleus
+                  Research), enhancing customer retention and process efficiency.
+                </li>
+              </ul>
+            </div>
 
+            {/* Card 4: Marketplace Sellers */}
+            <div ref={el => cardsRef.current[3] = el} className="relative flex h-full flex-col bg-sky-100 p-8 rounded-3xl rounded-tl-lg text-sky-900">
+              <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-sky-900/30">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-5 w-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </div>
+              <h3 className="mb-4 mt-4 text-2xl font-semibold">
+                Marketplace Sellers
+              </h3>
+              <ul className="list-disc list-inside space-y-2 text-sm leading-relaxed text-sky-800/90">
+                <li>
+                  Accelerate your e-commerce growth with seamless integrations, automated order management, and analytics dashboards tailored for multi-channel sellers.
+                </li>
+              </ul>
+            </div>
 
+            {/* Card 5: Marketplace Operators */}
+            <div ref={el => cardsRef.current[4] = el} className="relative flex h-full flex-col bg-sky-100 p-8 rounded-3xl rounded-tl-lg text-sky-900">
+              <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-sky-900/30">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-5 w-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </div>
+              <h3 className="mb-4 mt-4 text-2xl font-semibold">
+                Marketplace Operators
+              </h3>
+              <ul className="list-disc list-inside space-y-2 text-sm leading-relaxed text-sky-800/90">
+                <li>
+                  Streamline onboarding, payments, and dispute resolution with robust platform tools—scale your marketplace with confidence and operational efficiency.
+                </li>
+              </ul>
+            </div>
+
+            {/* Card 6: Marketplace SaaS Providers */}
+            <div ref={el => cardsRef.current[5] = el} className="relative flex h-full flex-col bg-sky-100 p-8 rounded-3xl rounded-tl-lg text-sky-900">
+              <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-sky-900/30">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="h-5 w-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </div>
+              <h3 className="mb-4 mt-4 text-2xl font-semibold">
+                Marketplace SaaS Providers
+              </h3>
+              <ul className="list-disc list-inside space-y-2 text-sm leading-relaxed text-sky-800/90">
+                <li>
+                  Deliver white-label marketplace solutions with modular APIs, scalable infrastructure, and built-in compliance for rapid go-to-market.
+                </li>
+              </ul>
+            </div>
           </div>
         </main>
       </div>
-
-
     </div>
   );
 };

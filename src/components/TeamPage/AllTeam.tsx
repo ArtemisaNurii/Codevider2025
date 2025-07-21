@@ -1,99 +1,80 @@
-"use client";
-
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import Masonry from "../ui/Mansory";
-import { items } from "./Team Member";
-
-// --- Data Structure Update ---
-// Added an `imageUrl` for each member to make it more personal.
-// Using placeholder images from picsum.photos. Replace with your actual team photos.
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  imageUrl: string;
-}
+import React from 'react';
+import TeamMemberCard from './TeamMember';
+import Carousel from './Carousel';
+import { teamMembers } from './Team';
 
 
-// --- New Team Member Card Component ---
-// This card is rectangular, more suited for portraits.
-// It features an interactive hover effect that reveals details.
-const TeamMemberCard = ({ member }: { member: TeamMember }) => (
-  <div className="team-card group relative aspect-[4/5] w-full overflow-hidden rounded-lg shadow-lg">
-    {/* Background Image */}
-    <img
-      src={member.imageUrl}
-      alt={`${member.name} portrait`}
-      className="absolute inset-0 z-0 h-full w-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:grayscale-0 grayscale"
-    />
 
-    {/* Content Overlay */}
-    {/* This overlay slides up on hover, revealing the role. */}
-    <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 text-white transition-transform duration-500 ease-in-out  transform translate-y-[calc(100%-80px)] group-hover:translate-y-0">
-      <h3 className="text-xl font-bold tracking-tight">{member.name}</h3>
-      
-      {/* Role appears with a slight delay after the slide-up */}
-      <div className="mt-2 transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:delay-300">
-        <p className="text-sm text-green-300 font-medium">{member.role}</p>
-        {/* You could add social media links here */}
-        <div className="mt-4 flex space-x-4">
-            {/* Example: <a href="#" className="text-white/70 hover:text-white">LinkedIn</a> */}
-        </div>
-      </div>
-    </div>
+const CoreValue = ({ title, children }) => (
+  <div>
+    <h3 className="text-2xl font-semibold text-gray-700">{title}</h3>
+    <p className="mt-2 text-lg leading-relaxed">{children}</p>
   </div>
 );
 
-// --- Main Page Component (Largely the same) ---
-const AllTeam: React.FC = () => {
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  // The GSAP animation for initial load remains the same - it's a great effect!
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".team-card",
-        { autoAlpha: 0, y: 50 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: { amount: 0.5, from: "start" },
-        }
-      );
-    }, gridRef);
-    return () => ctx.revert();
-  }, []);
-
+const CulturePage = () => {
   return (
-    <main className="w-full mt-20 min-h-screen  text-white font-sans">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
-        {/* --- Header Section (Slightly updated for the new theme) --- */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white bg-clip-text ">
-            Meet Our Minds
+    <div className=" text-gray-600 font-sans">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {/* --- HEADER SECTION --- */}
+        <header className="py-24 text-center">
+          <h1 className="text-4xl font-extrabold tracking-tighter text-sky-900 sm:text-5xl md:text-6xl">
+            The Minds Behind The Mission
           </h1>
-          <p className="mt-4 text-lg text-gray-300">
-            A collective of brilliant minds dedicated to crafting the future. Get to know the people who make it all happen.
+          <p className="mt-6 mx-auto max-w-3xl text-xl leading-8">
+            We are a dedicated group of strategists, creators, and engineers driven by a singular purpose: to build solutions that matter. Our culture is the engine of our innovation, built on a foundation of shared principles and mutual respect.
           </p>
-        </div>
-<div className="mt-20">        <Masonry
-  items={items}
-  ease="power3.out"
-  duration={0.6}
-  stagger={0.05}
-  animateFrom="bottom"
-  scaleOnHover={true}
-  hoverScale={0.95}
-  blurToFocus={true}
-  colorShiftOnHover={false}
-/></div>
+        </header>
+
+        {/* --- CORE VALUES SECTION --- */}
+        <section className="py-16 border-t border-b border-gray-200">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-sky-800 sm:text-4xl">
+              Our Guiding Principles
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3  gap-x-8 gap-y-12">
+            <CoreValue  title="Unwavering Integrity">
+              We operate with transparency and honesty. Trust is our most valuable currency, earned through every decision and interaction.
+            </CoreValue>
+            <CoreValue title="Purposeful Innovation">
+              We challenge the status quo not for the sake of novelty, but to create tangible value and drive meaningful progress for our clients.
+            </CoreValue>
+            <CoreValue title="Radical Collaboration">
+              The best ideas emerge when diverse perspectives converge. We foster an environment of open dialogue where every voice is heard and valued.
+            </CoreValue>
+          </div>
+        </section>
+        <section>
+          <Carousel />
+        </section>
+
+        <main className="py-24">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-sky-800 sm:text-4xl">
+              Meet the Team
+            </h2>
+            <p className="mt-4 mx-auto max-w-2xl text-lg leading-7">
+              The architects of our success. Each member brings a unique skill set and a shared commitment to excellence.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            {teamMembers.map((member) => (
+              <TeamMemberCard
+                key={member.id}
+                name={member.name}
+                role={member.role}
+                motto={member.motto}
+                imageUrl={member.imageUrl}
+              />
+            ))}
+          </div>
+        </main>
 
       </div>
-    </main>
+    </div>
   );
 };
 
-export default AllTeam;
+export default CulturePage;

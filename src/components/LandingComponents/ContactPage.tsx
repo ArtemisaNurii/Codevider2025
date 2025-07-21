@@ -61,7 +61,7 @@ const Contact: React.FC = () => {
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-3">
                 Let's Connect
               </p>
-              <h2 style={{fontFamily:"Poppins, sans"}} className="text-4xl sm:text-5xl font-semibold leading-tight text-gray-900 mb-6">
+              <h2 style={{fontFamily:"Poppins, sans"}} className="text-4xl sm:text-5xl font-semibold leading-tight text-gray-800 mb-6">
                 Ready to Build Your Next Big Idea?
               </h2>
               <p className="text-lg text-gray-300 max-w-lg mx-auto lg:mx-0 mb-8">
@@ -71,8 +71,8 @@ const Contact: React.FC = () => {
               {/* Alternative Contact Methods */}
               <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
                 <a href="mailto:hello@codevider.com" className="group flex items-center gap-3 text-left">
-                  <div className="bg-white/10 p-3 rounded-full group-hover:bg-emerald-400/20 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  <div className="bg-white/10 p-3 rounded-full group-hover:bg-sky-400/20 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                   </div>
                   <div>
                     <p className="font-semibold">Email Us Directly</p>
@@ -80,8 +80,8 @@ const Contact: React.FC = () => {
                   </div>
                 </a>
                 <a href="#schedule-call" className="group flex items-center gap-3 text-left">
-                  <div className="bg-white/10 p-3 rounded-full group-hover:bg-emerald-400/20 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                  <div className="bg-white/10 p-3 rounded-full group-hover:bg-sky-400/20 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                   </div>
                   <div>
                     <p className="font-semibold">Schedule a Call</p>
@@ -97,21 +97,21 @@ const Contact: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
                       <div className="space-y-2">
                           <Label htmlFor="name" className="text-gray-400">Full Name</Label>
-                          <Input id="name" name="name" type="text" placeholder="John Doe" value={form.name} onChange={handleChange} required className="bg-transparent border-gray-400 focus-visible:ring-offset-0 focus-visible:ring-emerald-400"/>
+                          <Input id="name" name="name" type="text" placeholder="John Doe" value={form.name} onChange={handleChange} required className="bg-transparent border-gray-400 focus-visible:ring-offset-0 focus-visible:ring-sky-400"/>
                       </div>
                       <div className="space-y-2">
                           <Label htmlFor="email" className="text-gray-400">Email Address</Label>
-                          <Input id="email" name="email" type="email" placeholder="john.doe@example.com" value={form.email} onChange={handleChange} required className="bg-transparent border-gray-400 focus-visible:ring-offset-0 focus-visible:ring-emerald-400"/>
+                          <Input id="email" name="email" type="email" placeholder="john.doe@example.com" value={form.email} onChange={handleChange} required className="bg-transparent border-gray-400 focus-visible:ring-offset-0 focus-visible:ring-sky-400"/>
                       </div>
                   </div>
                   <div className="space-y-2">
                       <Label htmlFor="description" className="text-gray-400">Tell us about your project</Label>
-                      <Textarea id="description" name="description" placeholder="I'm looking to build a new web application that..." value={form.description} onChange={handleChange} required className="bg-transparent border-gray-604 min-h-[120px] focus-visible:ring-offset-0 focus-visible:ring-emerald-400"/>
+                      <Textarea id="description" name="description" placeholder="I'm looking to build a new web application that..." value={form.description} onChange={handleChange} required className="bg-transparent border-gray-604 min-h-[120px] focus-visible:ring-offset-0 focus-visible:ring-sky-400"/>
                   </div>
                   <div className="space-y-2">
                       <Label htmlFor="budget" className="text-gray-400">What's your budget?</Label>
                       <Select name="budget" value={form.budget} onValueChange={handleSelectChange}>
-                          <SelectTrigger id="budget" className="w-full bg-transparent border-gray-604 focus:ring-offset-0 focus:ring-emerald-400">
+                          <SelectTrigger id="budget" className="w-full bg-transparent border-gray-604 focus:ring-offset-0 focus:ring-sky-400">
                               <SelectValue placeholder="Select a budget range" />
                           </SelectTrigger>
                           <SelectContent>

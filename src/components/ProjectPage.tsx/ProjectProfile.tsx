@@ -3,8 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ShareIcon,
-  ArrowUpRightIcon,
   CheckCircleIcon,
   ChartPieIcon,
   UsersIcon,
@@ -14,10 +12,11 @@ import {
 // Register GSAP plugin once globally
 gsap.registerPlugin(ScrollTrigger);
  
+// --- INTERFACES & DATA (No changes needed) ---
 interface CaseStudyHeroProps {
     title: string;
     subtitle: string;
-  }
+}
 
 interface KeyMetric {
   icon: React.ElementType;
@@ -25,13 +24,13 @@ interface KeyMetric {
   label: string;
 }
 
-interface ProjectInfo {
+interface ProjectInfoData {
   client: string;
   industry: string;
   services: string[];
 }
 
-interface CaseStudyContentSection {
+interface CaseStudyContentSectionData {
   title: string;
   id: "context" | "solution" | "results";
   paragraphs: string[];
@@ -45,8 +44,8 @@ interface CaseStudy {
   title: string;
   subtitle: string;
   keyMetrics: KeyMetric[];
-  projectInfo: ProjectInfo;
-  content: CaseStudyContentSection[];
+  projectInfo: ProjectInfoData;
+  content: CaseStudyContentSectionData[];
 }
 
 const caseStudyData: CaseStudy = {
@@ -68,7 +67,6 @@ const caseStudyData: CaseStudy = {
     services: ["Web App Modernization", "Cloud Migration (AWS)", "UI/UX Enhancements"],
   },
   content: [
-    // ... (content remains the same as original)
     {
       title: "Context",
       id: "context",
@@ -102,83 +100,80 @@ const caseStudyData: CaseStudy = {
 };
 
 
+// --- REFACTORED COMPONENTS ---
 
+// 1. Case Study Hero - Improved responsiveness with fixed heights
 const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ title, subtitle }) => (
-    <header className="relative flex h-[25vh] min-h-[400px] sm:h-[30vh] sm:min-h-[500px] flex-col justify-end p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 text-white">
-      {/* Gradient background layer */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-black to-emerald-300" />
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+    <header className="relative flex h-[400px] md:h-[450px] flex-col justify-end p-6 md:p-8 lg:p-12 text-white">
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-sky-800" />
+      <div className="absolute inset-0 bg-black/40" />
   
-      {/* Content overlays */}
       <div className="relative z-10 max-w-4xl mx-auto w-full">
-        <span className="mb-2 block text-xs sm:text-sm font-semibold uppercase tracking-widest text-emerald-400">
+        <span className="mb-2 block text-sm font-semibold uppercase tracking-widest text-sky-400">
           Case Study
         </span>
-        <h1 className="font-serif text-2xl s md:text-4xl lg:text-4xl font-semibold leading-tight">
+        <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight">
           {title}
         </h1>
-        <p className="mt-3 sm:mt-4 max-w-2xl text-base sm:text-lg md:text-xl text-slate-200">
+        <p className="mt-4 max-w-2xl text-base sm:text-lg text-sky-200">
           {subtitle}
         </p>
       </div>
     </header>
   );
   
-  
-
-// 2. Key Metrics Bar - Enhanced responsive design
+// 2. Key Metrics Bar - Better spacing on mid-size screens
 const KeyMetricsBar = ({ metrics }: { metrics: KeyMetric[] }) => (
-  <div className="bg-slate-50 ">
-    <div className="mx-auto flex max-w-7xl justify-between  lg:gap-8 gap-4 px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+  <div className="bg-slate-50 border-b border-slate-200">
+    {/* Use justify-around for more even spacing that adapts better */}
+    <div className="mx-auto flex max-w-7xl justify-around gap-4 px-4 py-6 sm:py-8 lg:px-8">
       {metrics.map((metric) => (
-        <div key={metric.label} className="text-center flex-1 lg:flex-none">
-          <metric.icon className="mx-auto h-6 w-6 sm:h-8 sm:w-8 text-emerald-500" aria-hidden="true" />
-          <p className="mt-2 text-xl sm:text-2xl lg:text-3xl font-semibold tracking-tight text-black/70">{metric.value}</p>
-          <p className="text-xs sm:text-sm font-medium text-black">{metric.label}</p>
+        <div key={metric.label} className="text-center flex-1 min-w-[100px] lg:flex-none">
+          <metric.icon className="mx-auto h-7 w-7 sm:h-8 sm:w-8 text-sky-500" aria-hidden="true" />
+          <p className="mt-2 text-xl sm:text-2xl font-bold tracking-tight text-sky-800">{metric.value}</p>
+          <p className="text-xs sm:text-sm font-medium text-gray-700">{metric.label}</p>
         </div>
       ))}
     </div>
   </div>
 );
 
-// 3. Project Info - Enhanced responsive design
-const ProjectInfo = ({ info }: { info: ProjectInfo }) => (
-  <div className="mb-6 sm:mb-8 lg:mb-10 rounded-lg border border-gray-00 bg-white p-4 sm:p-6">
-    <h3 className="text-base sm:text-lg font-semibold text-black/70">Project at a Glance</h3>
-    <dl className="mt-3 sm:mt-4 space-y-3 sm:space-y-4 text-sm">
+// 3. Project Info Card
+const ProjectInfo = ({ info }: { info: ProjectInfoData }) => (
+  <div className="rounded-lg border border-slate-200 bg-white p-6">
+    <h3 className="text-lg font-semibold text-sky-800">Project at a Glance</h3>
+    <dl className="mt-4 space-y-4 text-sm">
       <div>
-        <dt className="font-medium text-slate-500">Client</dt>
-        <dd className="mt-1 text-black/70">{info.client}</dd>
+        <dt className="font-medium text-gray-700">Client</dt>
+        <dd className="mt-1 text-gray-700">{info.client}</dd>
       </div>
       <div>
-        <dt className="font-medium text-slate-500">Industry</dt>
-        <dd className="mt-1 text-black/70">{info.industry}</dd>
+        <dt className="font-medium text-gray-700">Industry</dt>
+        <dd className="mt-1 text-gray-700">{info.industry}</dd>
       </div>
       <div>
-        <dt className="font-medium text-slate-500">Services</dt>
-        <dd className="mt-1 text-black/70">{info.services.join(", ")}</dd>
+        <dt className="font-medium text-gray-700">Services</dt>
+        <dd className="mt-1 text-gray-700">{info.services.join(", ")}</dd>
       </div>
     </dl>
   </div>
 );
 
-// 4. Table of Contents - Enhanced responsive design with mobile considerations
+// 4. Table of Contents (Desktop)
 const TableOfContents = ({ sections, activeSection }: { sections: { id: string; title: string }[]; activeSection: string }) => (
-  <aside className="sticky top-20 sm:top-24 lg:top-28 hidden lg:block h-fit">
-    <h3 className="mb-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black/70">
+  <aside className="sticky top-24 h-fit">
+    <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-700">
       On This Page
     </h3>
-    <ul className="space-y-1 sm:space-y-2">
+    <ul className="space-y-2">
       {sections.map((section) => (
         <li key={section.id}>
           <a
             href={`#${section.id}`}
-            className={`flex items-center rounded-md px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm transition-all duration-200 ${
+            className={`flex items-center rounded-md px-3 py-2 text-sm transition-all duration-200 ${
               activeSection === section.id
-                ? "bg-emerald-50 font-semibold text-emerald-700"
-                : "text-black/70 hover:bg-slate-100 hover:text-emerald-700"
+                ? "bg-sky-50 font-semibold text-sky-700"
+                : "text-gray-700 hover:bg-slate-100 hover:text-sky-700"
             }`}
           >
             {section.title}
@@ -189,43 +184,44 @@ const TableOfContents = ({ sections, activeSection }: { sections: { id: string; 
   </aside>
 );
 
-// 5. Main Content Section - Enhanced responsive typography and spacing
-const ContentSection = React.forwardRef<HTMLElement, { section: CaseStudyContentSection }>(
-    ({ section }, ref) => (
-      <section ref={ref} id={section.id} className="scroll-mt-16 sm:scroll-mt-20 lg:scroll-mt-24 content-section">
-        <h2 className="font-serif text-2xl sm:text-2xl md:text-3xl font-bold text-black/70">{section.title}</h2>
-        <div className="prose prose-sm sm:prose-base lg:prose-lg mt-3 sm:mt-4 max-w-none text-black/70 prose-li:my-0.5 sm:prose-li:my-1">
-          {section.paragraphs.map((p, i) => <p key={i} className="mb-3 sm:mb-4">{p}</p>)}
+// 5. Main Content Section - Now accepts an `isLast` prop
+const ContentSection = React.forwardRef<HTMLElement, { section: CaseStudyContentSectionData, isLast?: boolean }>(
+    ({ section, isLast = false }, ref) => (
+      <section ref={ref} id={section.id} className="scroll-mt-24 content-section">
+        <h2 className="font-serif text-2xl md:text-3xl font-bold text-gray-700">{section.title}</h2>
+        <div className="prose prose-slate mt-4 max-w-none prose-p:text-slate-700 prose-li:my-1">
+          {section.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
           {section.listItems && (
-            <ul className="mt-4 sm:mt-6">
+            <ul className="mt-5">
               {section.listItems.map((item, i) => (
-                <li key={i} className="flex items-start mb-2 sm:mb-3">
-                  <CheckCircleIcon className="mr-2 sm:mr-3 mt-0.5 sm:mt-1 h-4 w-4 sm:h-6 sm:w-6 flex-shrink-0 text-emerald-500" />
-                  <span className="text-sm sm:text-base">{item}</span>
+                <li key={i} className="flex items-start mb-2">
+                  <CheckCircleIcon className="mr-3 mt-1 h-5 w-5 flex-shrink-0 text-sky-500" />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
           )}
         </div>
-        <hr className="my-8 sm:my-12 lg:my-16 border-slate-200" />
+        {/* KEY CHANGE: Only render the divider if it's NOT the last section */}
+        {!isLast && <hr className="my-10 sm:my-12 lg:my-16 border-slate-200" />}
       </section>
     )
 );
 ContentSection.displayName = "ContentSection";
 
-// 6. Call To Action - Enhanced responsive design
+// 6. Call To Action
 const CallToAction = () => (
     <div className="bg-slate-50">
-        <div className="mx-auto max-w-4xl  p-4 sm:p-6 lg:p-8 pl-6 text-center">
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-black/70 ">
+        <div className="mx-auto max-w-4xl py-12 px-6 text-center sm:py-16 lg:py-20">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-gray-700">
                 Have a similar challenge?
             </h2>
-            <p className="mt-3 sm:mt-4 text- sm:text-lg leading-7 sm:leading-8 text-black/70 max-w-2xl mx-auto">
+            <p className="mt-4 text-base sm:text-lg leading-7 text-gray-700 max-w-2xl mx-auto">
                 Let's discuss how we can apply our expertise to elevate your project. We specialize in creating robust, scalable, and user-friendly digital solutions.
             </p>
-            <div className="mt-6 sm:mt-8">
+            <div className="mt-8">
             <button 
-              className="border border-black px-6 sm:px-8 py-2.5 sm:py-3 font-semibold rounded-lg hover:bg-black hover:text-white transition-colors w-full sm:w-auto flex-shrink-0 text-sm sm:text-base"
+              className="inline-flex items-center justify-center rounded-md border  bg-inherit px-8 py-3 text-base font-medium text-black border-slate-700 shadow-sm hover:bg-slate-900  hover:text-white transition-colors"
               onClick={() => (window.location.href = "mailto:hr@codevider.com")}
             >
               Let's Talk
@@ -236,12 +232,12 @@ const CallToAction = () => (
 );
 
 
+// --- MAIN PAGE COMPONENT ---
 const ProjectProfile: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>(caseStudyData.content[0].id);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    // --- GSAP SCROLL-TRIGGER FOR ACTIVE SECTION HIGHLIGHTING ---
     const triggers = sectionRefs.current.map((section, index) => {
       if (!section) return null;
       return ScrollTrigger.create({
@@ -253,7 +249,6 @@ const ProjectProfile: React.FC = () => {
       });
     });
 
-    // --- GSAP FADE-IN ANIMATION FOR CONTENT SECTIONS ---
     gsap.fromTo(
       ".content-section",
       { autoAlpha: 0, y: 50 },
@@ -264,82 +259,48 @@ const ProjectProfile: React.FC = () => {
     );
 
     return () => {
-        // Cleanup GSAP triggers on component unmount
         triggers.forEach(trigger => trigger?.kill());
     }
   }, []);
 
   return (
-    // Use `prose` with Tailwind Typography plugin for beautiful article styling out-of-the-box
-    <main className=" bg-[#ffffff] font-sans">
+    <main className="bg-[#f4f4f4] font-sans">
       <CaseStudyHero
         title={caseStudyData.title}
-        subtitle={caseStudyData.subtitle}     />
-  <KeyMetricsBar metrics={caseStudyData.keyMetrics} />
+        subtitle={caseStudyData.subtitle}
+      />
+      <KeyMetricsBar metrics={caseStudyData.keyMetrics} />
 
-<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 xl:py-24">
-  {/* Mobile: Single column layout */}
-  <div className="lg:hidden">
-    <ProjectInfo info={caseStudyData.projectInfo} />
-    
-    {/* Mobile Table of Contents */}
-    <div className="mb-6 sm:mb-8">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-black mb-3">
-        On This Page
-      </h3>
-      <ul className="space-y-1">
-        {caseStudyData.content.map((section) => (
-          <li key={section.id}>
-            <a
-              href={`#${section.id}`}
-              className={`flex items-center rounded-md px-3 py-2 text-sm transition-all duration-200 ${
-                activeSection === section.id
-                  ? "bg-emerald-50 font-semibold text-emerald-700"
-                  : "text-black/70 hover:bg-gray-100 hover:text-black"
-              }`}
-            >
-              {section.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+      {/* KEY CHANGE: Use a single flex layout that adapts. This simplifies the structure. */}
+      {/* Container with reduced bottom padding to shorten space before the CTA */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 sm:pt-12 sm:pb-16 lg:pt-16 lg:pb-20">
+        <div className="flex flex-col lg:flex-row lg:gap-12">
 
-    {/* Mobile Main Content */}
-    <article className="main-content-area">
-      {caseStudyData.content.map((section, index) => (
-        <ContentSection
-          key={section.id}
-          section={section}
-          ref={el => sectionRefs.current[index] = el}
-        />
-      ))}
-    </article>
-  </div>
+          {/* Sidebar: Appears second on mobile (using order), first on desktop */}
+          <aside className="w-full lg:w-1/4 lg:order-1">
+              <ProjectInfo info={caseStudyData.projectInfo} />
+              <div className="hidden lg:block mt-8">
+                <TableOfContents sections={caseStudyData.content} activeSection={activeSection} />
+              </div>
+          </aside>
+          
+          {/* Main Content: Appears first on mobile, second on desktop */}
+          <article className="w-full lg:w-3/4 main-content-area mt-10 lg:mt-0 lg:order-2">
+            {caseStudyData.content.map((section, index) => (
+              <ContentSection
+                key={section.id}
+                section={section}
+                // Pass the isLast prop to conditionally render the <hr>
+                isLast={index === caseStudyData.content.length - 1}
+                ref={el => sectionRefs.current[index] = el}
+              />
+            ))}
+          </article>
 
-  {/* Desktop: Two column layout */}
-  <div className="hidden lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-12">
-    {/* Left Column: Project Info & Sticky TOC */}
-    <div className="lg:col-span-1">
-        <ProjectInfo info={caseStudyData.projectInfo} />
-        <TableOfContents sections={caseStudyData.content} activeSection={activeSection} />
-    </div>
-
-    {/* Right Column: Main Content */}
-    <article className="lg:col-span-3 main-content-area">
-      {caseStudyData.content.map((section, index) => (
-        <ContentSection
-          key={section.id}
-          section={section}
-          ref={el => sectionRefs.current[index] = el}
-        />
-      ))}
-    </article>
-  </div>
-</div>
-
-<CallToAction />
-</main>
+        </div>
+      </div>
+      <CallToAction />
+    </main>
   );
 };
 

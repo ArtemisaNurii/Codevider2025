@@ -245,7 +245,7 @@ export const Map: React.FC = () => {
               {featuresData.map(({ id, icon: Icon, title, description }) => (
                 <motion.div key={id} variants={cardItemVariants}>
                   <div className="mb-4">
-                    <Icon className="h-8 w-8 text-[#65e6b4]" aria-hidden="true" />
+                    <Icon className="h-8 w-8 text-[#7dd3fc]" aria-hidden="true" />
                   </div>
                   <TextAnimation
                     as="h3"

@@ -24,7 +24,7 @@ const shineStyle = `
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(110deg, transparent 30%, #10b981, #34d399, transparent 70%);
+    background: linear-gradient(110deg, transparent 30%, #0ea5e9, #38bdf8, transparent 70%);
     background-size: 250% 100%;
     animation: shine 5s linear infinite;
     opacity: 0.8;
@@ -62,8 +62,8 @@ const LiveBlocks = () => {
         <div className="flex justify-between items-center px-2 mb-2">
             <p className="text-xs text-gray-400 font-mono">LIVE BLOCKS</p>
             <div className="flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                <p className="text-xs text-green-400 font-mono">SYNCED</p>
+                <div className="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></div>
+                <p className="text-xs text-sky-400 font-mono">SYNCED</p>
             </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -71,7 +71,7 @@ const LiveBlocks = () => {
                 <div key={block} className={`bg-white/[0.04] p-3 rounded-lg border border-white/10 ${index === 0 ? 'animate-fade-in' : ''}`}>
                     <p className="text-xs text-gray-400">Block</p>
                     <p className="text-white font-semibold font-mono">#{block}</p>
-                    <p className="text-xs text-green-400 mt-1 font-mono truncate">0x{Math.random().toString(16).substr(2, 8)}...</p>
+                    <p className="text-xs text-sky-400 mt-1 font-mono truncate">0x{Math.random().toString(16).substr(2, 8)}...</p>
                 </div>
             ))}
         </div>
@@ -88,7 +88,7 @@ const FeatureImportanceChart = ({ data }: { data: {label: string, value: number}
                 <div key={item.label} className="flex items-center gap-2 text-xs">
                     <span className="w-24 text-gray-300 truncate text-right">{item.label}</span>
                     <div className="flex-1 bg-white/10 rounded-full h-4">
-                        <div className="bg-gradient-to-r from-teal-500 to-green-500 h-4 rounded-full" style={{ width: `${item.value}%` }}></div>
+                        <div className="bg-gradient-to-r from-teal-500 to-sky-500 h-4 rounded-full" style={{ width: `${item.value}%` }}></div>
                     </div>
                     <span className="w-8 text-white font-mono text-left">{item.value}%</span>
                 </div>
@@ -102,7 +102,7 @@ const DASHBOARD_DATA = [
   {
     // CHANGED: Blockchain Dashboard Data
     dashboardTitle: "Blockchain Explorer",
-    mainStat: { label: "Live Gas Price", value: "28 Gwei", trend: "Standard", trendColor: "text-green-400" },
+    mainStat: { label: "Live Gas Price", value: "28 Gwei", trend: "Standard", trendColor: "text-sky-400" },
     specialComponent: 'live-blocks', // NEW: Key to render our special component
     quickActions: [
       { text: "View Transaction Pool", icon: FiLayers },
@@ -110,22 +110,22 @@ const DASHBOARD_DATA = [
       { text: "Inspect a Wallet", icon: FiSearch },
     ],
     recentActivity: [
-      { icon: FiPackage, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "NFT Minted: 'CypherPunk #782'", category: "Mint", categoryColor: "bg-white/10", amount: "0.2 ETH", amountColor: "text-gray-300", time: "12s ago" },
-      { icon: FiShare2, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "Delegated Stake to Validator", category: "Staking", categoryColor: "bg-white/10", amount: "+5.2% APY", amountColor: "text-green-400", time: "2m ago" },
-      { icon: FiCheckSquare, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "Governance Vote Cast: Prop #42", category: "DAO", categoryColor: "bg-white/10", amount: "For", amountColor: "text-gray-300", time: "1h ago" }
+      { icon: FiPackage, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "NFT Minted: 'CypherPunk #782'", category: "Mint", categoryColor: "bg-white/10", amount: "0.2 ETH", amountColor: "text-gray-300", time: "12s ago" },
+      { icon: FiShare2, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Delegated Stake to Validator", category: "Staking", categoryColor: "bg-white/10", amount: "+5.2% APY", amountColor: "text-sky-400", time: "2m ago" },
+      { icon: FiCheckSquare, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Governance Vote Cast: Prop #42", category: "DAO", categoryColor: "bg-white/10", amount: "For", amountColor: "text-gray-300", time: "1h ago" }
     ],
     pieChart: {
       title: "Transaction Types",
       data: [
-        { label: "DeFi Swap", value: 50, color: "text-green-400" },
+        { label: "DeFi Swap", value: 50, color: "text-sky-400" },
         { label: "NFT Mint", value: 30, color: "text-teal-400" },
-        { label: "Transfer", value: 20, color: "text-emerald-600" },
+        { label: "Transfer", value: 20, color: "text-sky-400" },
       ]
     }
   },
   {
     dashboardTitle: "Financial Overview",
-    mainStat: { label: "Portfolio Value", value: "€1.25M", trend: "+1.8%", trendColor: "text-green-400" },
+    mainStat: { label: "Portfolio Value", value: "€1.25M", trend: "+1.8%", trendColor: "text-sky-400" },
     chartPath: "M0,120 C50,110 80,90 130,95 S180,110 220,80 S280,30 330,40 S400,80 450,70",
     quickActions: [
       { text: "Execute Trade", icon: FiTrendingUp },
@@ -133,23 +133,23 @@ const DASHBOARD_DATA = [
       { text: "Compliance Check", icon: FiCheckSquare },
     ],
     recentActivity: [
-      { icon: FiTrendingUp, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "Bought 10 AAPL Shares", category: "Trade", categoryColor: "bg-white/10", amount: "+€1,750.20", amountColor: "text-green-400", time: "12m ago" },
+      { icon: FiTrendingUp, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Bought 10 AAPL Shares", category: "Trade", categoryColor: "bg-white/10", amount: "+€1,750.20", amountColor: "text-sky-400", time: "12m ago" },
       { icon: FiTrendingDown, iconColor: "text-gray-400", bgColor: "bg-white/5", description: "Sold 5 TSLA Shares", category: "Trade", categoryColor: "bg-white/10", amount: "-€1,280.00", amountColor: "text-gray-300", time: "2h ago" },
-      { icon: FiDollarSign, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "Dividend Received: MSFT", category: "Income", categoryColor: "bg-white/10", amount: "+€210.50", amountColor: "text-green-400", time: "1d ago" }
+      { icon: FiDollarSign, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Dividend Received: MSFT", category: "Income", categoryColor: "bg-white/10", amount: "+€210.50", amountColor: "text-sky-400", time: "1d ago" }
     ],
     pieChart: {
       title: "Asset Allocation",
       data: [
-        { label: "Equities", value: 55, color: "text-green-400" },
+        { label: "Equities", value: 55, color: "text-sky-400" },
         { label: "Bonds", value: 30, color: "text-teal-400" },
-        { label: "Cash", value: 15, color: "text-emerald-600" },
+        { label: "Cash", value: 15, color: "text-sky-400" },
       ]
     }
   },
   {
     // CHANGED: AI Dashboard Data
     dashboardTitle: "AI Model Monitoring",
-    mainStat: { label: "Inference Latency (p95)", value: "82ms", trend: "-3ms", trendColor: "text-green-400" },
+    mainStat: { label: "Inference Latency (p95)", value: "82ms", trend: "-3ms", trendColor: "text-sky-400" },
     specialComponent: 'feature-importance', // NEW: Key to render our special component
     featureImportanceData: [ // NEW: Data for our new chart
         { label: "user_age", value: 88 },
@@ -163,15 +163,15 @@ const DASHBOARD_DATA = [
     ],
     recentActivity: [
       { icon: FiAlertTriangle, iconColor: "text-yellow-400", bgColor: "bg-yellow-500/10", description: "Concept Drift Detected in 'user_region'", category: "Alert", categoryColor: "bg-white/10", amount: "High", amountColor: "text-yellow-400", time: "8m ago" },
-      { icon: FiZap, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "A/B Test Started: 'NewRec_v3'", category: "Experiment", categoryColor: "bg-white/10", amount: "50/50 Split", amountColor: "text-gray-300", time: "2h ago" },
-      { icon: FiCloud, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "Model 'Classifier-v4' deployed", category: "Deployment", categoryColor: "bg-white/10", amount: "100% Traffic", amountColor: "text-green-400", time: "5h ago" }
+      { icon: FiZap, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "A/B Test Started: 'NewRec_v3'", category: "Experiment", categoryColor: "bg-white/10", amount: "50/50 Split", amountColor: "text-gray-300", time: "2h ago" },
+      { icon: FiCloud, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Model 'Classifier-v4' deployed", category: "Deployment", categoryColor: "bg-white/10", amount: "100% Traffic", amountColor: "text-sky-400", time: "5h ago" }
     ],
     pieChart: {
       title: "Model Inference Cost",
       data: [
-        { label: "GPU (A100)", value: 65, color: "text-green-400" },
+        { label: "GPU (A100)", value: 65, color: "text-sky-400" },
         { label: "CPU", value: 25, color: "text-teal-400" },
-        { label: "Networking", value: 10, color: "text-emerald-600" },
+        { label: "Networking", value: 10, color: "text-sky-400" },
       ]
     }
   },
@@ -186,15 +186,15 @@ const DASHBOARD_DATA = [
     ],
     recentActivity: [
       { icon: FiTrendingDown, iconColor: "text-gray-400", bgColor: "bg-white/5", description: "High latency on /users endpoint", category: "Alert", categoryColor: "bg-white/10", amount: "1200ms", amountColor: "text-gray-300", time: "1m ago" },
-      { icon: FiPlus, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "New Subscription: 'Partner Inc.'", category: "Billing", categoryColor: "bg-white/10", amount: "Pro Tier", amountColor: "text-green-400", time: "45m ago" },
-      { icon: FiCode, iconColor: "text-green-400", bgColor: "bg-green-500/10", description: "API version v1.2 deployed", category: "Deployment", categoryColor: "bg-white/10", amount: "#a4b1c3", amountColor: "text-gray-300", time: "4h ago" }
+      { icon: FiPlus, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "New Subscription: 'Partner Inc.'", category: "Billing", categoryColor: "bg-white/10", amount: "Pro Tier", amountColor: "text-sky-400", time: "45m ago" },
+      { icon: FiCode, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "API version v1.2 deployed", category: "Deployment", categoryColor: "bg-white/10", amount: "#a4b1c3", amountColor: "text-gray-300", time: "4h ago" }
     ],
     pieChart: {
       title: "Traffic by Endpoint",
       data: [
-        { label: "/orders", value: 45, color: "text-green-400" },
-        { label: "/users", value: 35, color: "text-teal-400" },
-        { label: "/products", value: 20, color: "text-emerald-600" },
+        { label: "/orders", value: 45, color: "text-sky-400" },
+        { label: "/users", value: 35, color: "text-blue-400" },
+        { label: "/products", value: 20, color: "text-sky-400" },
       ]
     }
   },
@@ -284,7 +284,7 @@ export const Hero: React.FC = () => {
         <HeroHeadline displayedText={displayedText} />
 
         <div className="flex flex-col items-center gap-6">
-            <button className="bg-[#65e6b4] text-black font-semibold py-3 px-6 rounded-full flex items-center gap-2 transform transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(0,255,157,0.5)] hover:shadow-[0_0_25px_rgba(0,255,157,0.7)]">
+            <button className="bg-[#22aed8] text-black font-semibold py-3 px-6 rounded-full flex items-center gap-2 transform transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(56,189,248,0.5)] hover:shadow-[0_0_25px_rgba(56,189,248,0.7)]">
                 Our Services <ArrowUpRight size={20} strokeWidth={2.5} />
             </button>
         </div>
@@ -292,13 +292,12 @@ export const Hero: React.FC = () => {
         <div ref={dashboardRef} style={{ transformStyle: 'preserve-3d' }}
           className="relative w-full max-w-7xl mx-auto mt-8 bg-[#121212]/50 backdrop-blur-md rounded-xl lg:rounded-2xl border border-white/10 shadow-2xl shadow-black/40 flex flex-col overflow-hidden shine-border">
           
-          {/* CHANGED: Main layout is now flex-col, sidebar and content are separate children */}
           
           {/* --- Sidebar / Mobile Header --- */}
           <div className="w-full bg-black/20 p-3 border-b border-white/5 flex flex-col md:flex-row md:items-center gap-4">
               <div className="flex-shrink-0 flex items-center  justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-green-500 to-teal-400 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 to-sky-400 flex items-center justify-center">
                         <FiBarChart2 size={18} />
                     </div>
                     <h2 className="text-xl text-white font-semibold">Codevider</h2>
@@ -352,11 +351,11 @@ export const Hero: React.FC = () => {
                               <svg width="100%" height="100%" viewBox="0 0 450 150" preserveAspectRatio="none">
                                   <defs>
                                       <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
-                                          <stop offset="0%" stopColor="rgba(4,211,153,0.3)" />
-                                          <stop offset="100%" stopColor="rgba(4,211,153,0)" />
+                                          <stop offset="0%" stopColor="rgba(56,189,248,0.3)" />
+                                          <stop offset="100%" stopColor="rgba(56,189,248,0)" />
                                       </linearGradient>
                                   </defs>
-                                  <path d={currentDashboardData.chartPath} stroke="#04d399" fill="url(#chartGradient)" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
+                                  <path d={currentDashboardData.chartPath} stroke="#38bdf8" fill="url(#chartGradient)" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
                               </svg>
                           </div>
                       )}
@@ -367,7 +366,7 @@ export const Hero: React.FC = () => {
                   <h3 className="font-medium text-white text-center mb-2">Quick Actions</h3>
                   {currentDashboardData.quickActions.map((action, index) => (
                       <button key={index} className="group w-full text-left flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-lg font-semibold transition-all text-sm">
-                          <action.icon className="text-green-400 transition-transform group-hover:scale-110 flex-shrink-0" size={18}/> 
+                          <action.icon className="text-sky-400 transition-transform group-hover:scale-110 flex-shrink-0" size={18}/> 
                           <span className="transition-transform group-hover:translate-x-1 truncate">{action.text}</span>
                       </button>
                   ))}

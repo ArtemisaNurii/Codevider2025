@@ -8,7 +8,7 @@ const currentDashboardData = {
     label: 'Model Accuracy',
     value: '98.2%',
     trend: '+0.5%',
-    trendColor: 'text-emerald-400',
+    trendColor: 'text-sky-400',
   },
   chartPath: "M0,75 C50,50 100,100 150,80 S250,60 300,90 S400,120 450,100",
   quickActions: [
@@ -17,14 +17,14 @@ const currentDashboardData = {
     { text: 'Analyze Dataset', icon: FiDatabase },
   ],
   recentActivity: [
-    { description: "Job 'ClassifierV4' started", category: 'Training', amount: '24h est.', time: '5m ago', icon: FiPlay, bgColor: 'bg-green-500/20', iconColor: 'text-green-400', categoryColor: 'bg-green-500/30', amountColor: 'text-white' },
-    { description: "Model 'RecommenderV2' accuracy up", category: 'Metric', amount: '94.5%', time: '3h ago', icon: FiBarChart2, bgColor: 'bg-emerald-500/20', iconColor: 'text-emerald-400', categoryColor: 'bg-emerald-500/30', amountColor: 'text-emerald-400' },
+    { description: "Job 'ClassifierV4' started", category: 'Training', amount: '24h est.', time: '5m ago', icon: FiPlay, bgColor: 'bg-sky-500/20', iconColor: 'text-sky-400', categoryColor: 'bg-sky-500/30', amountColor: 'text-white' },
+    { description: "Model 'RecommenderV2' accuracy up", category: 'Metric', amount: '94.5%', time: '3h ago', icon: FiBarChart2, bgColor: 'bg-sky-500/20', iconColor: 'text-sky-400', categoryColor: 'bg-sky-500/30', amountColor: 'text-sky-400' },
     { description: "Dataset 'images_Q4' ingested", category: 'Data', amount: '10.2 GB', time: '8h ago', icon: FiDatabase, bgColor: 'bg-sky-500/20', iconColor: 'text-sky-400', categoryColor: 'bg-sky-500/30', amountColor: 'text-white' },
   ],
   pieChart: {
     title: 'Compute Resource Usage',
     data: [
-      { label: 'GPU', value: 70, color: 'text-green-400' },
+      { label: 'GPU', value: 70, color: 'text-sky-400' },
       { label: 'CPU', value: 20, color: 'text-teal-400' },
       { label: 'Storage', value: 10, color: 'text-sky-400' },
     ]
@@ -49,7 +49,7 @@ export default function Dashboard() {
         {/* Top section: Logo and Nav */}
         <div className="flex-1 lg:flex-none">
           <div className="flex items-center gap-2 sm:gap-3 p-1 sm:p-2 mb-4 lg:mb-6">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md sm:rounded-lg bg-gradient-to-tr from-green-500 to-teal-400 flex items-center justify-center">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md sm:rounded-lg bg-gradient-to-tr from-sky-500 to-teal-400 flex items-center justify-center">
               {/* Responsive icons: smaller for mobile, larger for desktop */}
               <FiBarChart2 size={16} className="lg:hidden" />
               <FiBarChart2 size={18} className="hidden lg:block" />
@@ -120,7 +120,7 @@ export default function Dashboard() {
             <div className="flex-grow mt-4 -mb-4 -mx-4">
               <svg width="100%" height="100%" viewBox="0 0 450 150" preserveAspectRatio="none" className="min-h-[120px]">
                 <defs><linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stopColor="rgba(4,211,153,0.3)" /><stop offset="100%" stopColor="rgba(4,211,153,0)" /></linearGradient></defs>
-                <path d={currentDashboardData.chartPath} stroke="#04d399" fill="url(#chartGradient)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                                    <path d={currentDashboardData.chartPath} stroke="#38bdf8" fill="url(#chartGradient)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
               </svg>
             </div>
           </div>
@@ -130,7 +130,7 @@ export default function Dashboard() {
             <h3 className="font-semibold text-white text-base text-center mb-2">Quick Actions</h3>
             {currentDashboardData.quickActions.map((action, index) => (
               <button key={index} className="group w-full text-left flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-lg font-semibold transition-colors text-sm">
-                <action.icon className="text-green-400" size={18} />
+                <action.icon className="text-sky-400" size={18} />
                 <span>{action.text}</span>
               </button>
             ))}

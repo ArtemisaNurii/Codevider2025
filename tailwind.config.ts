@@ -21,7 +21,7 @@ export default {
 		extend: {
 			colors: {
 				'brand': {
-				  'dark-green': '#0a1a11',
+				          'dark-blue': '#0c4a6e',
 				  'lime': '#bfe165',
 				},
 				border: 'hsl(var(--border))',

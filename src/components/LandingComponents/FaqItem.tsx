@@ -53,8 +53,8 @@ const FaqItem = ({ question, answer, isOpen, onClick }: FaqItemProps) => {
         <span className="textmd font-normal text-black/80">{question}</span>
         {/* The 'x' in the original is created by rotating a '+' */}
         <div ref={iconRef} className="relative w-6 h-6 flex-shrink-0">
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-0.5 bg-[#36c574]"></span>
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-4 bg-[#36c574]"></span>
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-0.5 bg-[#38bdf8]"></span>
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-4 bg-[#38bdf8]"></span>
         </div>
       </button>
       <div

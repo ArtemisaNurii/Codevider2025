@@ -87,7 +87,7 @@ const NavbarVariant: React.FC = () => {
     };
   }, []); // The dependency array is now empty.
 
-  // 5. REWRITTEN click handler to handle both routes and sections.
+  // 5. OPTIMIZED click handler with fast Lenis scrolling
   const handleNavClick = (targetId: string, isRoute: boolean = false) => {
     setMobileOpen(false);
 
@@ -99,14 +99,26 @@ const NavbarVariant: React.FC = () => {
       const path = targetId === 'hero' ? '/' : `/#${targetId}`;
       navigate(path);
 
-      // Find the target element on the page and scroll to it
+      // Use Lenis for fast, smooth scrolling
       setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) {
-          // Use `block: 'start'` to align the top of the section with the top of the viewport
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Try to access Lenis instance from global scope
+          const lenisInstance = (window as any).__lenis || (document.querySelector('[data-lenis]') as any)?.__lenis;
+          
+          if (lenisInstance) {
+            // Use Lenis scrollTo for faster, more controlled scrolling
+            lenisInstance.scrollTo(element, {
+              offset: -80, // Account for navbar height
+              duration: 1.0, // Fast duration for snappy navigation
+            });
+          } else {
+            // Fallback to instant scroll with offset calculation
+            const elementTop = element.getBoundingClientRect().top + window.pageYOffset - 80;
+            window.scrollTo({ top: elementTop, behavior: 'smooth' });
+          }
         }
-      }, 50); // Reduced delay for faster navigation
+      }, 10); // Minimal delay for faster response
     }
   };
 
@@ -137,7 +149,7 @@ const NavbarVariant: React.FC = () => {
                   <li key={label}>
                     <button
                       onClick={() => handleNavClick(targetId, isRoute)}
-                      className="relative text-gray-300 hover:text-white px-3 py-2 text-sm font-medium lg:text-lg transition-colors duration-300 group"
+                      className="relative text-gray-300 hover:text-white px-3 py-2 text-sm font-medium lg:text-md transition-colors duration-300 group"
                     >
                       {label}
                       <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />

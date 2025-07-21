@@ -137,7 +137,7 @@ export const Benefits = () => {
             className={`principle-card bg-white/95 backdrop-blur-sm p-6 lg:p-8 rounded-xl sm:rounded-2xl flex flex-col items-start text-left shadow-lg ${colSpan}`}
           >
             {/* BUMPED: Increased icon size from w-6 to w-8 on mobile. */}
-            <Icon className="w-8 h-8 lg:w-10 lg:h-10 text-[#52ca86] mb-4 lg:mb-6" />
+                            <Icon className="w-8 h-8 lg:w-10 lg:h-10 text-[#0ea5e9] mb-4 lg:mb-6" />
             {/* BUMPED: Increased title size from sm to lg on mobile for more emphasis. */}
             <h2 className="font-mono text-lg sm:text-xl font-bold tracking-wider uppercase text-gray-700 mb-3 leading-tight">
               {title}

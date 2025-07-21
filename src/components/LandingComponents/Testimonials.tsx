@@ -39,15 +39,15 @@ const CARD_HEIGHT = 'h-auto';
 
 const Testimonials: React.FC = () => (
   <section className="relative w-full overflow-hidden bg-[#f8f7f4]  py-20 sm:py-28">
-    {/* This is the new green/lime background "glow" element */}
+    {/* This is the new sky background "glow" element */}
     <div
       aria-hidden="true"
-      className="absolute max-w-7xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-[550px] rounded-full bg-gradient-to-br from-green-300 to-lime-300 opacity-50 blur-3xl"
+      className="absolute max-w-7xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-[550px] rounded-full bg-gradient-to-br from-sky-300 to-sky-300 opacity-50 blur-3xl"
     />
 
     <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div className="mb-16 text-center">
-        <p className="text-sm font-semibold uppercase tracking-wider text-green-700">Testimonials</p>
+        <p className="text-sm font-semibold uppercase tracking-wider text-sky-700">Testimonials</p>
         <h2 className="mt-4 text-4xl font-semibold tracking-tight text-gray-700 sm:text-5xl">
           What Our Clients Say
         </h2>

@@ -25,10 +25,16 @@ const Index = () => {
   const testimonialsRef = useRef<HTMLElement>(null);
   // const teamRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
-
   return (
     <div className="relative min-h-screen">
-      <ReactLenis root>
+      <ReactLenis 
+        root 
+        options={{
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+        }}
+      >
         <div className="relative z-10">
           <section ref={heroRef}>
             <Hero />
@@ -36,9 +42,10 @@ const Index = () => {
           <section ref={aboutRef}>
             <AboutUsPage />
           </section>
+          <SavingsPage />
+
           <Map />
 
-          <SavingsPage />
 
           <section ref={servicesRef}>
             <ServicesPage />
