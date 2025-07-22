@@ -39,10 +39,10 @@ const NavbarVariant: React.FC = () => {
   // The `targetId` must match the 'id' attribute of your section elements.
   // Use `isRoute: true` for page navigation instead of section scrolling.
   const navItems = [
-    { label: 'Home', targetId: 'hero', isRoute: false },
     { label: 'About', targetId: 'about', isRoute: false },
     { label: 'Services', targetId: 'services', isRoute: false },
     { label: 'Projects', targetId: '/projects', isRoute: true },
+    { label: 'Team', targetId: '/team', isRoute: true },
     { label: 'Process', targetId: 'process', isRoute: false },
   ];
 

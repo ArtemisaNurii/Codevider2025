@@ -1,115 +1,114 @@
-// components/Loader/Loader.tsx
-
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { TextPlugin } from 'gsap/TextPlugin';
-
-gsap.registerPlugin(TextPlugin);
+import { AnimatePresence, motion } from 'framer-motion';
+import { LogoIcon } from './LogoIcon';
 
 interface LoaderProps {
   isLoading: boolean;
-  onLoadingComplete?: () => void;
+  onLoadingComplete: () => void;
 }
 
-const Loader: React.FC<LoaderProps> = ({ isLoading, onLoadingComplete }) => {
-  const [shouldRender, setShouldRender] = useState(isLoading);
+const CodeviderLoader: React.FC<LoaderProps> = ({ isLoading, onLoadingComplete }) => {
+  const isAnimationComplete = useRef(false);
+
+  // Refs for all three separate elements + containers
   const loaderRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
-  const cursorRef = useRef<HTMLSpanElement>(null);
-  const hasCalledComplete = useRef(false);
-  const animationStarted = useRef(false);
+  const iconContainerRef = useRef<HTMLDivElement>(null);
+  const hexagonRef = useRef<SVGPathElement>(null);
+  const bracketsRef = useRef<SVGPathElement>(null);
+  const heartRef = useRef<SVGPathElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isLoading) {
-      setShouldRender(true);
-      hasCalledComplete.current = false;
-      animationStarted.current = false;
-    }
-    
-    if (shouldRender && isLoading && !animationStarted.current) {
-      animationStarted.current = true;
-      console.log("Starting loader animation");
-      
-      const tl = gsap.timeline();
-      
-      // Reset text content
-      gsap.set(textRef.current, { text: "" });
-      
-      // Show loader immediately and start animation
-      tl.set(loaderRef.current, { opacity: 1 })
-        .to(textRef.current, {
-          text: "Codevider",
-          duration: 1.2,
-          ease: 'none',
-          onComplete: () => {
-            console.log("Text animation complete");
-            if (onLoadingComplete && !hasCalledComplete.current) {
-              hasCalledComplete.current = true;
-              // Small delay to let user see the complete text
-              setTimeout(() => {
-                console.log("Calling onLoadingComplete");
-                onLoadingComplete();
-              }, 300);
-            }
-          },
-        })
-        .to(cursorRef.current, {
-          opacity: 0,
-          repeat: -1,
-          yoyo: true,
-          duration: 0.5,
-          ease: 'power2.inOut',
-        }, 0);
+    if (!isLoading || isAnimationComplete.current) return;
 
-      return () => {
-        tl.kill();
-        gsap.killTweensOf([cursorRef.current, textRef.current, loaderRef.current]);
-      };
-    } else if (!isLoading && shouldRender) {
-      // Fade out when loading is complete
-      const tl = gsap.timeline();
-      tl.to(loaderRef.current, {
-        opacity: 0,
-        duration: 0.4,
+    gsap.set(loaderRef.current, { autoAlpha: 1 });
+    gsap.set(textRef.current, { autoAlpha: 0 });
+
+    // Initial state for the heart: a "beat" animation
+    gsap.set(heartRef.current, { autoAlpha: 0, scale: 0.8 });
+
+    // Initial state for brackets & hexagon: drawing animation
+    gsap.set([bracketsRef.current, hexagonRef.current], {
+      strokeDasharray: (i, target) => target.getTotalLength(),
+      strokeDashoffset: (i, target) => target.getTotalLength(),
+    });
+
+    // The final timeline, animating three distinct elements
+    const tl = gsap.timeline({
+      onComplete: () => {
+        isAnimationComplete.current = true;
+        setTimeout(onLoadingComplete, 700);
+      },
+    });
+
+    tl
+      // 1. The Heart "beats" into existence
+      .to(heartRef.current, {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: 'back.out(1.7)',
+      })
+      // 2. The Brackets are drawn around the heart
+      .to(bracketsRef.current, {
+        strokeDashoffset: 0,
+        duration: 0.7,
+        ease: 'power2.out',
+      }, '-=0.2')
+      // 3. The Hexagon structure is drawn last
+      .to(hexagonRef.current, {
+        strokeDashoffset: 0,
+        duration: 1.0,
         ease: 'power2.inOut',
-        onComplete: () => setShouldRender(false),
-      });
+      }, '<0.2')
+      // 4. The text appears with its glow
+      .to(textRef.current, {
+        autoAlpha: 1,
+        duration: 1,
+        ease: 'power2.out',
+      }, '-=0.8')
+      // 5. The final "power-on" pulse for the entire icon
+      .to(iconContainerRef.current, {
+        filter: 'drop-shadow(0 0 12px rgba(229, 231, 235, 0.7)) blur(0.5px)',
+        duration: 0.3,
+        yoyo: true,
+        repeat: 1,
+        ease: 'power2.inOut',
+      }, '-=0.5');
 
-      return () => tl.kill();
-    }
-  }, [isLoading, shouldRender, onLoadingComplete]);
-
-  // Fallback: ensure callback is called even if animation fails
-  useEffect(() => {
-    if (isLoading && onLoadingComplete && !hasCalledComplete.current) {
-      const fallbackTimer = setTimeout(() => {
-        console.log("Fallback: calling onLoadingComplete");
-        if (!hasCalledComplete.current) {
-          hasCalledComplete.current = true;
-          onLoadingComplete();
-        }
-      }, 2000);
-
-      return () => clearTimeout(fallbackTimer);
-    }
   }, [isLoading, onLoadingComplete]);
 
-  console.log("Loader render:", { isLoading, shouldRender, animationStarted: animationStarted.current });
-
-  if (!shouldRender) return null;
-
   return (
-    <div 
-      ref={loaderRef} 
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-black via-[#050a08] to-[#0ea5e9]"
-      style={{ opacity:  0}}
-    >
-      <div className="flex items-center">
-        <h1 ref={textRef} className="text-4xl md:text-6xl font-mono text-gray-100"></h1>
-        <span ref={cursorRef} className="ml-2 h-10 md:h-16 w-1 bg-sky-400" />
-      </div>
-    </div>
+    <AnimatePresence>
+      {isLoading && (
+        <motion.div
+          ref={loaderRef}
+          exit={{ opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } }}
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black"
+          style={{ visibility: 'hidden' }}
+        >
+          <div
+            ref={iconContainerRef}
+            className="transition-filter duration-300 [filter:drop-shadow(0_0_4px_rgba(229,231,235,0.5))_blur(0.5px)]"
+          >
+            <LogoIcon
+              hexagonRef={hexagonRef}
+              bracketsRef={bracketsRef}
+              heartRef={heartRef}
+            />
+          </div>
+          <div
+            ref={textRef}
+            className="mt-6 text-5xl  font-tight tracking-widest text-gray-200"
+            style={{ textShadow: '0 0 5px rgba(229, 231, 235, 0.5)' }}
+          >
+            Codevider
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
-export default Loader;
+export default CodeviderLoader;

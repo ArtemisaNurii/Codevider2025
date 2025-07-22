@@ -10,8 +10,8 @@ import NotFound from "./pages/NotFound";
 import ProjectProfile from "./components/ProjectPage.tsx/ProjectProfile";
 import ProjectPage from "./components/ProjectPage.tsx/AllProject";
 import NavbarVariant from "./components/Navbar";
-import Loader from "./components/Loader/Loader";
 import CulturePage from "./components/TeamPage/AllTeam";
+import CodeviderLoader from "./components/Loader/Loader";
 // import AllTeam from "./components/TeamPage/AllTeam";
 
 const queryClient = new QueryClient();
@@ -44,7 +44,7 @@ const AppContent = () => {
     <>
       {/* Show the loader only during initial load */}
       {isInitialLoading && (
-        <Loader isLoading={isInitialLoading} onLoadingComplete={handleLoadingComplete} />
+        <CodeviderLoader isLoading={isInitialLoading} onLoadingComplete={handleLoadingComplete} />
       )}
 
       {/* App content that shows after initial load */}
