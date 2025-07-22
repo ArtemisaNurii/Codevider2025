@@ -104,12 +104,12 @@ const FaqSection = () => {
             <TextAnimation
               as="h2"
               text="Frequently Asked Questions"
-              classname="text-4xl sm:text-5xl font-semibold leading-tight text-black/70"
+              classname="text-4xl sm:text-5xl font-semibold leading-tight text-gray-900"
             />
             <TextAnimation
               as="p"
               text="In a creative workplace, employees with responsibly try different solutions"
-              classname="mt-4 text-black/70"
+              classname="mt-4 text-gray-900"
             />
             {/* Animate the link as a single block for a clean effect */}
             <motion.a
@@ -119,7 +119,7 @@ const FaqSection = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
               transition={{ delay: 0.2 }} // Add a slight delay to have it appear last
-              className="inline-block mt-10 text-black/70 font-medium border-b-2 border-white pb-1 hover:border-gray-500 hover:text-gray-500 transition-colors"
+              className="inline-block mt-10 text-gray-900 font-medium border-b-2 border-black pb-1 hover:border-gray-500 hover:text-gray-500 transition-colors"
             >
               Contact support
             </motion.a>

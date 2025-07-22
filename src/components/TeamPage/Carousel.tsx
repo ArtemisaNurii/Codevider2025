@@ -7,6 +7,7 @@ import {
   SliderContent,
   SliderWrapper,
 } from '@/components/TeamPage/ProgressCarousel';
+import LazyImage from '@/components/ui/LazyImage';
 import zyra9 from '../../assets/officeImages/zyra9.jpg';
 import zyra7 from '../../assets/officeImages/zyra6.jpg';
 import zyra11 from '../../assets/officeImages/zyra11.jpg';
@@ -45,12 +46,13 @@ export default function Carousel() {
       <SliderContent>
         {items.map((item, index) => (
           <SliderWrapper key={index} value={item.sliderName}>
-            <img
-              className="rounded-xl 2xl:h-[500px] h-[350px] object-cover"
+            <LazyImage
+              className="rounded-xl 2xl:h-[500px] h-[350px] object-cover w-full"
               src={item.img}
+              alt={item.desc}
+              quality="medium"
               width={1900}
               height={1080}
-              alt={item.desc}
             />
           </SliderWrapper>
         ))}

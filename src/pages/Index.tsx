@@ -1,6 +1,5 @@
 // pages/index.tsx
-import { useEffect, useRef, useState } from "react";
-import Lenis from "@studio-freight/lenis";
+import { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { ReactLenis } from "lenis/react";
 import ServicesPage from "@/components/LandingComponents/Services";
 import Testimonials from "@/components/LandingComponents/Testimonials";
@@ -9,12 +8,12 @@ import Contact from "@/components/LandingComponents/ContactPage";
 // import Loader from '@/components/Loader/Loader';
 import AboutUsPage from "@/components/LandingComponents/AboutUs";
 import { Benefits } from "@/components/LandingComponents/Benefits";
-import { Map } from "@/components/LandingComponents/Projects";
+import { Map } from "@/components/LandingComponents/MapContent";
 import { Hero } from "@/components/LandingComponents/Hero";
 import FaqSection from "@/components/LandingComponents/Faq";
-import Projectss from "@/components/LandingComponents/ProjectSection";
+import Projectss from "@/components/LandingComponents/Solutions";
 import SavingsPage from "@/components/LandingComponents/WhyWeWin";
-import SolutionPillars from "@/components/LandingComponents/SolutionPillars";
+import SolutionPillars from "@/components/LandingComponents/UseCases";
 
 const Index = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -23,7 +22,6 @@ const Index = () => {
   const projectsRef = useRef<HTMLElement>(null);
   const processRef = useRef<HTMLElement>(null);
   const testimonialsRef = useRef<HTMLElement>(null);
-  // const teamRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   return (
     <div className="relative min-h-screen">

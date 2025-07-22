@@ -2,11 +2,11 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
-  FiArrowUpRight, FiSearch, FiBell, FiGrid, FiUsers, FiBriefcase, FiCheckSquare,
-  FiUser, FiSettings, FiHelpCircle, FiPhoneCall, FiPlus, FiBarChart2,
-  FiTrendingUp, FiTrendingDown, FiCode, FiDollarSign, FiCpu, FiCloud,
-  FiShare2, FiLayers, FiDatabase, FiLock, FiTerminal, FiPackage, FiZap, FiAlertTriangle
-} from 'react-icons/fi';
+  Search, Bell, Grid3X3, Users, Briefcase, CheckSquare,
+  User, Settings, HelpCircle, Phone, Plus, BarChart2,
+  TrendingUp, TrendingDown, Code, DollarSign, Cpu, Cloud,
+  Share2, Layers, Database, Lock, Terminal, Package, Zap, AlertTriangle
+} from 'lucide-react';
 import HeroHeadline from './HeroHeadline';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -105,14 +105,14 @@ const DASHBOARD_DATA = [
     mainStat: { label: "Live Gas Price", value: "28 Gwei", trend: "Standard", trendColor: "text-sky-400" },
     specialComponent: 'live-blocks', // NEW: Key to render our special component
     quickActions: [
-      { text: "View Transaction Pool", icon: FiLayers },
-      { text: "Deploy New Contract", icon: FiCloud },
-      { text: "Inspect a Wallet", icon: FiSearch },
+      { text: "View Transaction Pool", icon: Layers },
+      { text: "Deploy New Contract", icon: Cloud },
+      { text: "Inspect a Wallet", icon: Search },
     ],
     recentActivity: [
-      { icon: FiPackage, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "NFT Minted: 'CypherPunk #782'", category: "Mint", categoryColor: "bg-white/10", amount: "0.2 ETH", amountColor: "text-gray-300", time: "12s ago" },
-      { icon: FiShare2, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Delegated Stake to Validator", category: "Staking", categoryColor: "bg-white/10", amount: "+5.2% APY", amountColor: "text-sky-400", time: "2m ago" },
-      { icon: FiCheckSquare, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Governance Vote Cast: Prop #42", category: "DAO", categoryColor: "bg-white/10", amount: "For", amountColor: "text-gray-300", time: "1h ago" }
+      { icon: Package, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "NFT Minted: 'CypherPunk #782'", category: "Mint", categoryColor: "bg-white/10", amount: "0.2 ETH", amountColor: "text-gray-300", time: "12s ago" },
+      { icon: Share2, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Delegated Stake to Validator", category: "Staking", categoryColor: "bg-white/10", amount: "+5.2% APY", amountColor: "text-sky-400", time: "2m ago" },
+      { icon: CheckSquare, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Governance Vote Cast: Prop #42", category: "DAO", categoryColor: "bg-white/10", amount: "For", amountColor: "text-gray-300", time: "1h ago" }
     ],
     pieChart: {
       title: "Transaction Types",
@@ -128,14 +128,14 @@ const DASHBOARD_DATA = [
     mainStat: { label: "Portfolio Value", value: "€1.25M", trend: "+1.8%", trendColor: "text-sky-400" },
     chartPath: "M0,120 C50,110 80,90 130,95 S180,110 220,80 S280,30 330,40 S400,80 450,70",
     quickActions: [
-      { text: "Execute Trade", icon: FiTrendingUp },
-      { text: "Generate P&L Report", icon: FiBarChart2 },
-      { text: "Compliance Check", icon: FiCheckSquare },
+      { text: "Execute Trade", icon: TrendingUp },
+      { text: "Generate P&L Report", icon: BarChart2 },
+      { text: "Compliance Check", icon: CheckSquare },
     ],
     recentActivity: [
-      { icon: FiTrendingUp, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Bought 10 AAPL Shares", category: "Trade", categoryColor: "bg-white/10", amount: "+€1,750.20", amountColor: "text-sky-400", time: "12m ago" },
-      { icon: FiTrendingDown, iconColor: "text-gray-400", bgColor: "bg-white/5", description: "Sold 5 TSLA Shares", category: "Trade", categoryColor: "bg-white/10", amount: "-€1,280.00", amountColor: "text-gray-300", time: "2h ago" },
-      { icon: FiDollarSign, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Dividend Received: MSFT", category: "Income", categoryColor: "bg-white/10", amount: "+€210.50", amountColor: "text-sky-400", time: "1d ago" }
+      { icon: TrendingUp, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Bought 10 AAPL Shares", category: "Trade", categoryColor: "bg-white/10", amount: "+€1,750.20", amountColor: "text-sky-400", time: "12m ago" },
+      { icon: TrendingDown, iconColor: "text-gray-400", bgColor: "bg-white/5", description: "Sold 5 TSLA Shares", category: "Trade", categoryColor: "bg-white/10", amount: "-€1,280.00", amountColor: "text-gray-300", time: "2h ago" },
+      { icon: DollarSign, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Dividend Received: MSFT", category: "Income", categoryColor: "bg-white/10", amount: "+€210.50", amountColor: "text-sky-400", time: "1d ago" }
     ],
     pieChart: {
       title: "Asset Allocation",
@@ -157,14 +157,14 @@ const DASHBOARD_DATA = [
         { label: "session_duration", value: 52 },
     ],
     quickActions: [
-      { text: "Trigger Retraining", icon: FiCpu },
-      { text: "Rollback to v2.1", icon: FiTrendingDown },
-      { text: "Analyze Predictions", icon: FiDatabase },
+      { text: "Trigger Retraining", icon: Cpu },
+      { text: "Rollback to v2.1", icon: TrendingDown },
+      { text: "Analyze Predictions", icon: Database },
     ],
     recentActivity: [
-      { icon: FiAlertTriangle, iconColor: "text-yellow-400", bgColor: "bg-yellow-500/10", description: "Concept Drift Detected in 'user_region'", category: "Alert", categoryColor: "bg-white/10", amount: "High", amountColor: "text-yellow-400", time: "8m ago" },
-      { icon: FiZap, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "A/B Test Started: 'NewRec_v3'", category: "Experiment", categoryColor: "bg-white/10", amount: "50/50 Split", amountColor: "text-gray-300", time: "2h ago" },
-      { icon: FiCloud, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Model 'Classifier-v4' deployed", category: "Deployment", categoryColor: "bg-white/10", amount: "100% Traffic", amountColor: "text-sky-400", time: "5h ago" }
+      { icon: AlertTriangle, iconColor: "text-yellow-400", bgColor: "bg-yellow-500/10", description: "Concept Drift Detected in 'user_region'", category: "Alert", categoryColor: "bg-white/10", amount: "High", amountColor: "text-yellow-400", time: "8m ago" },
+      { icon: Zap, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "A/B Test Started: 'NewRec_v3'", category: "Experiment", categoryColor: "bg-white/10", amount: "50/50 Split", amountColor: "text-gray-300", time: "2h ago" },
+      { icon: Cloud, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "Model 'Classifier-v4' deployed", category: "Deployment", categoryColor: "bg-white/10", amount: "100% Traffic", amountColor: "text-sky-400", time: "5h ago" }
     ],
     pieChart: {
       title: "Model Inference Cost",
@@ -180,14 +180,14 @@ const DASHBOARD_DATA = [
     mainStat: { label: "Requests / Min", value: "1.2M", trend: "-2.1%", trendColor: "text-gray-400" },
     chartPath: "M0,70 C50,80 80,60 130,65 S180,80 220,50 S280,20 330,30 S400,70 450,60",
     quickActions: [
-      { text: "Register New Endpoint", icon: FiPlus },
-      { text: "View API Logs", icon: FiTerminal },
-      { text: "Generate API Key", icon: FiLock },
+      { text: "Register New Endpoint", icon: Plus },
+      { text: "View API Logs", icon: Terminal },
+      { text: "Generate API Key", icon: Lock },
     ],
     recentActivity: [
-      { icon: FiTrendingDown, iconColor: "text-gray-400", bgColor: "bg-white/5", description: "High latency on /users endpoint", category: "Alert", categoryColor: "bg-white/10", amount: "1200ms", amountColor: "text-gray-300", time: "1m ago" },
-      { icon: FiPlus, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "New Subscription: 'Partner Inc.'", category: "Billing", categoryColor: "bg-white/10", amount: "Pro Tier", amountColor: "text-sky-400", time: "45m ago" },
-      { icon: FiCode, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "API version v1.2 deployed", category: "Deployment", categoryColor: "bg-white/10", amount: "#a4b1c3", amountColor: "text-gray-300", time: "4h ago" }
+      { icon: TrendingDown, iconColor: "text-gray-400", bgColor: "bg-white/5", description: "High latency on /users endpoint", category: "Alert", categoryColor: "bg-white/10", amount: "1200ms", amountColor: "text-gray-300", time: "1m ago" },
+      { icon: Plus, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "New Subscription: 'Partner Inc.'", category: "Billing", categoryColor: "bg-white/10", amount: "Pro Tier", amountColor: "text-sky-400", time: "45m ago" },
+      { icon: Code, iconColor: "text-sky-400", bgColor: "bg-sky-500/10", description: "API version v1.2 deployed", category: "Deployment", categoryColor: "bg-white/10", amount: "#a4b1c3", amountColor: "text-gray-300", time: "4h ago" }
     ],
     pieChart: {
       title: "Traffic by Endpoint",
@@ -275,11 +275,11 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id='hero' ref={containerRef} style={{ fontFamily: "Poppins, sans" }}
+    <section id='hero' ref={containerRef} style={{ fontFamily: "Helvetica, Helvetica Neue, Arial, sans-serif" }}
       className="section-hero relative flex items-center justify-center w-full text-gray-100 font-sans overflow-hidden">
       <style>{shineStyle}</style>
       <div className="absolute inset-0 z-0 bg-dot-grid-white/[0.07] [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]"></div>
-      <div className="relative z-10 container mx-auto flex flex-col items-center gap-12 px-4 py-16 sm:py-24">
+      <div className="relative z-10 container mx-auto flex flex-col items-center gap-6 px-4 py-4 sm:py-8">
         
         <HeroHeadline displayedText={displayedText} />
 
@@ -290,7 +290,7 @@ export const Hero: React.FC = () => {
         </div>
 
         <div ref={dashboardRef} style={{ transformStyle: 'preserve-3d' }}
-          className="relative w-full max-w-7xl mx-auto mt-8 bg-[#121212]/50 backdrop-blur-md rounded-xl lg:rounded-2xl border border-white/10 shadow-2xl shadow-black/40 flex flex-col overflow-hidden shine-border">
+          className="relative w-full max-w-7xl mx-auto mt-2 bg-[#121212]/50 backdrop-blur-md rounded-xl lg:rounded-2xl border border-white/10 shadow-2xl shadow-black/40 flex flex-col overflow-hidden shine-border">
           
           
           {/* --- Sidebar / Mobile Header --- */}
@@ -298,20 +298,20 @@ export const Hero: React.FC = () => {
               <div className="flex-shrink-0 flex items-center  justify-between">
                 <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 to-sky-400 flex items-center justify-center">
-                        <FiBarChart2 size={18} />
+                        <BarChart2 size={18} />
                     </div>
                     <h2 className="text-xl text-white font-semibold">Codevider</h2>
                 </div>
                  <div className="md:hidden flex items-center gap-4">
-                     <FiSearch className="text-gray-400 hover:text-white cursor-pointer" size={20}/>
-                     <FiBell className="text-gray-400 hover:text-white cursor-pointer" size={20}/>
+                     <Search className="text-gray-400 hover:text-white cursor-pointer" size={20}/>
+                     <Bell className="text-gray-400 hover:text-white cursor-pointer" size={20}/>
                  </div>
               </div>
               <nav className="flex items-center max-sm:hidden gap-2 overflow-x-auto pb-2 md:pb-0">
-                  <a href="#" className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 text-white text-sm"><FiGrid size={16} /> Dashboard</a>
-                  <a href="#" className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 text-gray-300 transition-colors text-sm"><FiUsers size={16} /> Leads</a>
-                  <a href="#" className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 text-gray-300 transition-colors text-sm"><FiBriefcase size={16} /> Companies</a>
-                  <a href="#" className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 text-gray-300 transition-colors text-sm"><FiCheckSquare size={16} /> Tasks</a>
+                  <a href="#" className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 text-white text-sm"><Grid3X3 size={16} /> Dashboard</a>
+                  <a href="#" className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 text-gray-300 transition-colors text-sm"><Users size={16} /> Leads</a>
+                  <a href="#" className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 text-gray-300 transition-colors text-sm"><Briefcase size={16} /> Companies</a>
+                  <a href="#" className="flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 text-gray-300 transition-colors text-sm"><CheckSquare size={16} /> Tasks</a>
               </nav>
           </div>
 
@@ -319,8 +319,8 @@ export const Hero: React.FC = () => {
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-2xl md:text-3xl text-white font-semibold">{currentDashboardData.dashboardTitle}</h1>
                 <div className="hidden md:flex items-center gap-4">
-                  <FiBell className="text-gray-400 hover:text-white cursor-pointer" size={20}/>
-                  <FiSearch className="text-gray-400 hover:text-white cursor-pointer" size={20}/>
+                  <Bell className="text-gray-400 hover:text-white cursor-pointer" size={20}/>
+                  <Search className="text-gray-400 hover:text-white cursor-pointer" size={20}/>
                 </div>
             </div>
 
@@ -342,12 +342,20 @@ export const Hero: React.FC = () => {
                           <button className="px-2.5 py-1 text-xs text-black bg-white rounded font-bold">1M</button>
                       </div>
                   </div>
-                  <div className="flex-grow mt-4">
+                  <div className="flex-grow mt-4 min-h-[200px] flex flex-col">
                       {/* NEW: Conditional rendering logic for special components */}
-                      {currentDashboardData.specialComponent === 'live-blocks' && <LiveBlocks />}
-                      {currentDashboardData.specialComponent === 'feature-importance' && currentDashboardData.featureImportanceData && <FeatureImportanceChart data={currentDashboardData.featureImportanceData} />}
+                      {currentDashboardData.specialComponent === 'live-blocks' && (
+                          <div className="flex-grow">
+                              <LiveBlocks />
+                          </div>
+                      )}
+                      {currentDashboardData.specialComponent === 'feature-importance' && currentDashboardData.featureImportanceData && (
+                          <div className="flex-grow">
+                              <FeatureImportanceChart data={currentDashboardData.featureImportanceData} />
+                          </div>
+                      )}
                       {!currentDashboardData.specialComponent && (
-                          <div className="w-full h-full -mb-4 -mx-4">
+                          <div className="w-full flex-grow -mb-4 -mx-4 min-h-[200px]">
                               <svg width="100%" height="100%" viewBox="0 0 450 150" preserveAspectRatio="none">
                                   <defs>
                                       <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">

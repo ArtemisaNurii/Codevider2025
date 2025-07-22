@@ -24,7 +24,7 @@ export const projectsData: Project[] = [
       id: 1, 
       title: 'Enterprise CRM Platform', 
       category: 'Web Application', 
-      imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80', 
+      imageUrl: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1720&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       description: 'A comprehensive CRM solution designed for large-scale enterprises to manage customer relations, sales pipelines, and marketing campaigns with unparalleled efficiency.', 
       features: ['React.js', 'Node.js', 'PostgreSQL', 'Data Analytics', 'CI/CD Pipeline']
     },
@@ -32,7 +32,7 @@ export const projectsData: Project[] = [
       id: 2, 
       title: 'AI-Powered Analytics', 
       category: 'Data Science', 
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80', 
+      imageUrl: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1720&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       description: 'An advanced analytics dashboard that uses machine learning to provide predictive insights and rich data visualizations for business intelligence.', 
       features: ['Python (Flask)', 'TensorFlow', 'Scikit-learn', 'D3.js', 'AWS SageMaker']
     },
@@ -40,7 +40,7 @@ export const projectsData: Project[] = [
       id: 3, 
       title: 'Mobile Banking App', 
       category: 'Mobile Application', 
-      imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80', 
+      imageUrl: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1720&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       description: 'A secure and intuitive mobile banking application for iOS and Android, featuring biometric login, instant fund transfers, and bill payment services.', 
       features: ['React Native', 'Firebase', 'Biometric Auth', 'PCI Compliance', 'Java/Kotlin']
     },
@@ -48,7 +48,7 @@ export const projectsData: Project[] = [
       id: 4, 
       title: 'Corporate Branding & Website', 
       category: 'UI/UX Design & Development', 
-      imageUrl: 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80', 
+      imageUrl: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1720&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
       description: 'Complete rebranding and a new corporate website for a major tech firm, focusing on a modern UI/UX, accessibility (WCAG 2.1), and a compelling brand story.', 
       features: ['Figma', 'Next.js', 'Contentful CMS', 'GSAP', 'WCAG 2.1']
     },

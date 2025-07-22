@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
+import { Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -61,7 +61,7 @@ const Contact: React.FC = () => {
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-3">
                 Let's Connect
               </p>
-              <h2 style={{fontFamily:"Poppins, sans"}} className="text-4xl sm:text-5xl font-semibold leading-tight text-gray-800 mb-6">
+              <h2 style={{fontFamily:"Helvetica, Helvetica Neue, Arial, sans-serif"}} className="text-4xl sm:text-5xl font-semibold leading-tight text-gray-800 mb-6">
                 Ready to Build Your Next Big Idea?
               </h2>
               <p className="text-lg text-gray-300 max-w-lg mx-auto lg:mx-0 mb-8">
@@ -124,7 +124,7 @@ const Contact: React.FC = () => {
                   </div>
                   <Button type="submit" variant="secondary" className="w-full text-base font-semibold py-6">
                       Send Your Message
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-send-icon lucide-send"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
                   </Button>
                 </form>
             </div>
@@ -170,13 +170,13 @@ const Contact: React.FC = () => {
           {/* Social Icons */}
           <div className="flex items-center gap-5">
             <a href="https://www.instagram.com/codevider/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FaInstagram className="text-gray-400 hover:text-white text-2xl transition-colors" />
+              <Instagram className="text-gray-400 hover:text-white text-2xl transition-colors" />
             </a>
             <a href="https://www.facebook.com/codevider/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <FaFacebook className="text-gray-400 hover:text-white text-2xl transition-colors" />
+              <Facebook className="text-gray-400 hover:text-white text-2xl transition-colors" />
             </a>
             <a href="https://al.linkedin.com/company/codevider" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <FaLinkedin className="text-gray-400 hover:text-white text-2xl transition-colors" />
+              <Linkedin className="text-gray-400 hover:text-white text-2xl transition-colors" />
             </a>
           </div>
 

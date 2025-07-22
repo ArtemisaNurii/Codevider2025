@@ -149,8 +149,8 @@ export default {
 
 			},
 			fontFamily: {
-				'sans': ['Poppins', 'sans'],
-				'serif': ['Poppins', 'serif'],
+				'sans': ['Helvetica', 'Helvetica Neue', 'Arial', 'sans-serif'],
+				'serif': ['Helvetica', 'Helvetica Neue', 'Arial', 'sans-serif'],
 			  },
 			  wrapper: {
 			

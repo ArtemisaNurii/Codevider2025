@@ -1,5 +1,6 @@
 import React from 'react';
 import Marquee from 'react-fast-marquee';
+import LazyImage from '@/components/ui/LazyImage';
 import sarah from '../../assets/images/sarah.jpg';
 import james from '../../assets/images/james.jpg';
 import lisa from '../../assets/images/lisa.jpg';
@@ -48,7 +49,7 @@ const Testimonials: React.FC = () => (
     <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div className="mb-16 text-center">
         <p className="text-sm font-semibold uppercase tracking-wider text-sky-700">Testimonials</p>
-        <h2 className="mt-4 text-4xl font-semibold tracking-tight text-gray-700 sm:text-5xl">
+        <h2 className="mt-4 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
           What Our Clients Say
         </h2>
         <p className="mt-4 text-lg text-gray-700">
@@ -68,16 +69,17 @@ const Testimonials: React.FC = () => (
             `}
           >
             {/* Main testimonial text with updated color for contrast */}
-            <blockquote className="text-lg leading-relaxed text-gray-700">
+            <blockquote className="text-lg leading-relaxed text-gray-900">
               "{t.text}"
             </blockquote>
             
             {/* Footer with updated colors and border */}
             <footer className="mt-8 flex items-center gap-4 border-t border-gray-900/10 pt-6">
-              <img 
+              <LazyImage 
                 src={t.image} 
                 alt={t.name} 
-                className="h-14 w-14 rounded-full object-cover ring-2 ring-white/50" 
+                className="h-14 w-14 rounded-full object-cover ring-2 ring-white/50"
+                quality="medium"
               />
               <div>
                 <p className="font-semibold text-gray-900">{t.name}</p>

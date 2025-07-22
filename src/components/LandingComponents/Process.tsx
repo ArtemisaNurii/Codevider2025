@@ -81,11 +81,11 @@ const ProcessStep = ({ step, title, description, delay = 0 }) => {
         transitionDelay: hasAnimated ? `${delay}ms` : '0ms',
       }}
     >
-                      <p className="text-sm font-semibold text-[#38bdf8] tracking-[0.2em] uppercase">{step}</p>
-      <h3 className="text-base font-medium  text-gray-700uppercase tracking-wider mt-4 mb-3">{title}</h3>
-              {/* The short blue divider line */}
-                      <div className="border-b border-[#38bdf8] w-1/4 mb-4"></div>
-      <p className=" text-black/60  text-sm leading-relaxed">{description}</p>
+      <p className="text-sm md:text-base lg:text-lg font-semibold text-[#38bdf8] tracking-[0.2em] uppercase">{step}</p>
+      <h3 className="text-base md:text-lg lg:text-lg font-medium text-gray-700 uppercase tracking-wider mt-4 mb-3">{title}</h3>
+      {/* The short blue divider line */}
+      <div className="border-b border-[#38bdf8] w-1/4 mb-4"></div>
+      <p className="text-gray-700 text-sm md:text-base lg:text-md leading-relaxed">{description}</p>
     </div>
   );
 };
@@ -93,18 +93,18 @@ const ProcessStep = ({ step, title, description, delay = 0 }) => {
 const Processes = () => {
   return (
     // Section container (Transparent background as requested)
-    <section id="process" className="font-sans  text-gray-700  bg-[#f8f7f4] max-sm:pt-10  pb-20">
+    <section id="process" className="font-sans  text-gray-900  bg-[#f8f7f4] max-sm:pt-10  pb-20">
       <div className='p-10 max-sm:p-0'></div>
       <div className="container mx-auto  max-w-7xl">
         
         {/* Header Section (03 Removed) */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start mb-20">
           <div className="lg:col-span-2">
-            <h2 className=" text-5xl sm:text-5xl font-semibold uppercase leading-tight">
+            <h2 className="text-4xl sm:text-5xl  font-semibold uppercase leading-tight">
               Process
             </h2>
           </div>
-          <div className="lg:col-span-3  text-gray-700 text-base leading-relaxed space-y-4 pt-2">
+          <div className="lg:col-span-3 text-gray-700 text-base md:text-lg lg:text-xl leading-relaxed space-y-4 pt-2">
           <p>
   Our clients’ needs guide every step. We begin with a hands‑on discovery phase-aligning on goals, defining the product vision, and documenting core assumptions in a shared worksheet.
 </p>

@@ -1,4 +1,4 @@
-import { HandCoins, Hourglass, Rabbit } from 'lucide-react';
+import { HandCoins, Hourglass, FastForward } from 'lucide-react';
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,7 +12,7 @@ const cardData = [
     percentage: "+30%",
     description: "Our solutions lead the way to a faster, sustainable deployment.",
     label: "SPEED",
-    Icon: Rabbit,
+    Icon: FastForward,
   },
   {
     percentage: "25%",
@@ -56,8 +56,7 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(({ percentage, 
         {/* Decorative logo bars */}
         <div className="flex items-center">
           <div className="flex items-end mr-2">
-            <span className="h-4 w-1 bg-gray-800"></span>
-            <span className="h-3 w-1 bg-gray-800 ml-0.5"></span>
+      
           </div>
         </div>
                     <Icon size={32} className="text-sky-400" />
@@ -128,7 +127,7 @@ const Saving = () => {
     <div className="bg-[#f8f7f4] font-sans p-6 relative" ref={containerRef}>
       <div className="max-w-7xl mx-auto">
         <header className="max-w-[550px] mb-16" ref={headerRef}>
-          <h1 className="text-4xl lg:text-5xl font-semibold text-gray-700 leading-tight tracking-tight">
+          <h1 className="text-4xl lg:text-5xl font-semibold text-gray-900 leading-tight tracking-tight">
             Embedded, cross‑functional pods that ship 30% faster and cut run‑rate 25%
           </h1>
         </header>

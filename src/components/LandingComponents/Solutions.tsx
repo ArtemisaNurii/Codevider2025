@@ -3,20 +3,18 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // All icon imports are consolidated here
-import { BsArrowRight, BsRecordCircle } from 'react-icons/bs';
-import { FiFigma, FiSlack } from 'react-icons/fi';
-import { SiWebpack } from 'react-icons/si';
+import { ArrowRight, Users, Layers, Target, Handshake } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger); 
 
 // --- DATA DEFINITION ---
 // Data is moved outside the component to prevent re-declaration on every render.
 // An icon map makes the data structure cleaner and easier to manage.
 const ICONS = {
-  figma: FiFigma,
-  webpack: SiWebpack,
-  record: BsRecordCircle,
-  slack: FiSlack,
+  users: Users,
+  layers: Layers,
+  target: Target,
+  handshake: Handshake,
 };
 
 const solutionPillarsData = [
@@ -29,7 +27,7 @@ const solutionPillarsData = [
       number: "01.",
       title: "Pod Teams",
       description: null, // Use null for empty values for clarity
-      icon: ICONS.figma,
+      icon: ICONS.users,
       showArrow: true,
     }
   },
@@ -42,7 +40,7 @@ const solutionPillarsData = [
       number: "02.",
       title: "Modern Stack",
       description: "MERN & Microservices for 50-% faster releases",
-      icon: ICONS.webpack,
+      icon: ICONS.layers,
       showArrow: true,
     }
   },
@@ -55,7 +53,7 @@ const solutionPillarsData = [
       number: "03.",
       title: "Outcome SLAs",
       description: null,
-      icon: ICONS.record,
+      icon: ICONS.target,
       showArrow: true,
     }
   },
@@ -68,7 +66,7 @@ const solutionPillarsData = [
       number: "04.",
       title: "Flexible Loaning",
       description: null,
-      icon: ICONS.slack,
+      icon: ICONS.handshake,
       showArrow: true,
     }
   },
@@ -109,7 +107,7 @@ const ServiceCard = ({ number, title, description, Icon, showArrow }) => {
               aria-label={`Learn more about ${title}`}
               className="flex items-center justify-center w-12 h-12 border border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 transform group-hover:translate-x-2 group-hover:rotate-45"
             >
-              <BsArrowRight className="text-2xl" />
+              <ArrowRight className="text-2xl" />
             </button>
           )}
         </div>
@@ -190,7 +188,7 @@ export default function Projectss() {
   }, []);
 
   return (
-    <div ref={main} className="bg-[#f8f7f4] text-gray-700 min-h-screen font-sans overflow-x-hidden">
+    <div ref={main} className="bg-[#f8f7f4] text-gray-900 min-h-screen font-sans overflow-x-hidden">
       <div className="container max-w-7xl mx-auto px-6 py-16 md:py-24">
         
         <header className="mb-16">

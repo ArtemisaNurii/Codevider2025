@@ -216,7 +216,7 @@ export const Map: React.FC = () => {
               <TextAnimation
                 as="h2"
                 text="Your Trusted Outsorcing Company"
-                classname="mt-2 text-4xl sm:text-5xl font-semibold  leading-tight text-gray-700"
+                classname="mt-2 text-4xl sm:text-5xl font-semibold  leading-tight text-gray-900"
               />
             </motion.div>
             <motion.div 
@@ -250,7 +250,7 @@ export const Map: React.FC = () => {
                   <TextAnimation
                     as="h3"
                     text={title}
-                    classname="text-lg font-semibold leading-7 text-gray-700"
+                    classname="text-lg font-semibold leading-7 text-gray-900"
                   />
                   <TextAnimation
                     as="p"

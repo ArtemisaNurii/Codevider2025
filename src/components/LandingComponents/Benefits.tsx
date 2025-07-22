@@ -120,7 +120,7 @@ export const Benefits = () => {
       className="relative  text-gray-700 pt-10     bg-[#f8f7f4] flex flex-col items-center w-full px-4 sm:px-6"
     >
       <header className="benefits-header relative z-10 pt-10 text-center mb-12 lg:mb-16 max-w-4xl w-full">
-        <h1 className="header-title mt-6 lg:mt-10 font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold  text-gray-700  tracking-[0.1em] sm:tracking-[0.15em]  ">
+        <h1 className="header-title mt-6 lg:mt-10 text-3xl sm:text-4xl lg:text-5xl font-bold  text-gray-900 leading-6  ">
           BEYOND THE CODE
         </h1>
         <p className="header-subtitle mt-4 text-base lg:text-lg  text-gray-700  max-w-2xl mx-auto">
@@ -134,12 +134,12 @@ export const Benefits = () => {
           <div
             key={i}
             // BUMPED: Increased padding from p-4 to p-6 for more internal space.
-            className={`principle-card bg-white/95 backdrop-blur-sm p-6 lg:p-8 rounded-xl sm:rounded-2xl flex flex-col items-start text-left shadow-lg ${colSpan}`}
+            className={`principle-card bg-white/95 backdrop-blur-sm p-6 lg:p-8 rounded-3xl sm:rounded-2xl flex flex-col items-start text-left shadow-lg ${colSpan}`}
           >
             {/* BUMPED: Increased icon size from w-6 to w-8 on mobile. */}
                             <Icon className="w-8 h-8 lg:w-10 lg:h-10 text-[#0ea5e9] mb-4 lg:mb-6" />
             {/* BUMPED: Increased title size from sm to lg on mobile for more emphasis. */}
-            <h2 className="font-mono text-lg sm:text-xl font-bold tracking-wider uppercase text-gray-700 mb-3 leading-tight">
+            <h2 className="font-mono text-lg sm:text-xl font-bold tracking-wider uppercase text-gray-900 mb-3 leading-tight">
               {title}
             </h2>
             {/* BUMPED: Increased description text from xs to sm for readability. This is the most important change. */}

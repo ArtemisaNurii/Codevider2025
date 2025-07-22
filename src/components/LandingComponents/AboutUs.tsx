@@ -22,7 +22,7 @@ const AboutUsPage: React.FC = () => {
   // We no longer need the GSAP useEffect, so it has been removed.
 
   return (
-    <div id='about' className=" py-20   bg-[#f8f7f4] text-gray-700 px-4 max-sm:px-10 lg:px-8">
+    <div id='about' className=" py-20   bg-[#f8f7f4] text-gray-900 px-4 max-sm:px-10 lg:px-8">
       <div className="max-w-7xl mx-auto">
 
         {/* Section 1: Who we are */}

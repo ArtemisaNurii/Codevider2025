@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
-import { BsArrowRight } from 'react-icons/bs';
+import { ArrowRight } from 'lucide-react';
 
 // Register the GSAP plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -150,17 +150,17 @@ const ViewAllButton = () => {
     };
   
     return (
-      <div className="flex justify-center mt-16 md:mt-24">
+      <div className="flex justify-center mt-10 md:mt-24">
         <button
           ref={buttonRef}
           onClick={handleClick}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="group flex items-center gap-3 px-8 py-4 border-2 border-gray-700 rounded-full text-gray-700 font-semibold text-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2"
+          className="group flex items-center gap-3 px-8 py-4 border-2 border-gray-700 rounded-full text-gray-900 font-semibold text-lg transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
         >
           <span>View All Projects</span>
           <span ref={arrowRef} className="transform transition-transform duration-300">
-            <BsArrowRight className="text-xl" />
+                                  <ArrowRight className="text-xl" />
           </span>
         </button>
       </div>
@@ -231,7 +231,7 @@ const InfoCard = ({ tag, features, subtitle }) => {
           {/* <SquigglyLine /> */}
         </div>
       </div>
-      <div className="arrow-icon absolute top-6 right-6 w-16 h-16 bg-[#f8f7f4] text-gray-700 rounded-full flex items-center justify-center cursor-pointer shadow-md hover:scale-105 transition-transform">
+      <div className="arrow-icon absolute top-6 right-6 w-16 h-16 bg-[#f8f7f4] text-gray-900 rounded-full flex items-center justify-center cursor-pointer shadow-md hover:scale-105 transition-transform">
         <ArrowIcon />
       </div>
     </div>
@@ -443,13 +443,13 @@ const SolutionPillars = () => {
     ];
 
     return (
-        <div className="bg-[#f8f7f4] text-gray-700 min-h-screen p-6 sm:p-8 lg:p-12 font-sans">
+        <div className="bg-[#f8f7f4] text-gray-900 min-h-screen p-6 sm:p-8 lg:p-12 font-sans">
 
             <main className="grid grid-cols-1 max-w-7xl mx-auto lg:grid-cols-10 gap-8">
                 {/* Left Column */}
                 <div className="lg:col-span-5 flex flex-col gap-8">
                     <div className="main-title">
-                        <AnimatedText className="text-5xl max-sm:text-3xl font-semibold leading-tight tracking-tighter" delay={0}>
+                        <AnimatedText className="text-5xl  font-semibold leading-tight tracking-tighter" delay={0}>
                             {pageData.mainTitle.part1}
                         </AnimatedText>
                         <AnimatedText className="text-5xl max-sm:text-3xl font-semibold leading-tight tracking-tighter bg- px-2 rounded-lg" delay={0.3}>
@@ -493,7 +493,6 @@ const SolutionPillars = () => {
                 </div>
             </main>
 
-            {/* --- NEW SECTION: Mini Case Studies --- */}
             <section className="py-16 max-w-7xl mx-auto  md:py-24">
                 <div className="text-center mb-12">
                     <AnimatedText className="text-4xl md:text-5xl font- leading-tight tracking-tighter" delay={0}>
@@ -510,7 +509,6 @@ const SolutionPillars = () => {
                 </div>
             </section>
 
-            {/* --- IMPLEMENTED: View All Projects Button --- */}
             <ViewAllButton />
 <div className='m-22'></div>
         </div>
